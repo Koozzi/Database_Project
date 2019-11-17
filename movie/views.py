@@ -10,9 +10,9 @@ from django.contrib import auth
 
 def movieSelect(request):
     if request.user.is_authenticated:
-        return render(request, 'movieSelect.html')
+        return render(request, 'movie/movieSelect.html')
     else:
-        return render(request, 'not_logged_in.html')
+        return render(request, 'movie/not_logged_in.html')
 
 def signup(request):
     if request.method == "POST":
@@ -27,8 +27,8 @@ def signup(request):
             )
             auth.login(request, user)
             return redirect('movieSelect')
-        return render(request, 'signup.html')
-    return render(request, 'signup.html')
+        return render(request, 'movie/signup.html')
+    return render(request, 'movie/signup.html')
 
 def signin(request):
     if request.method == "POST":
@@ -39,9 +39,9 @@ def signin(request):
             login(request, user)
             return redirect('movieSelect')
         else:
-            return render(request, 'login.html')
+            return render(request, 'movie/login.html')
     else:
-        return render(request, 'login.html')
+        return render(request, 'movie/login.html')
 
 def signout(request):
     logout(request)
