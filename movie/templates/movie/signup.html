@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JHBox</title>
+</head>
+<body>
+    <div class = "container">
+        <h1>JHBox</h1>
+        <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+            아이디
+            <br>
+            <input name="id"  type="text">
+            <br>
+            비밀번호
+            <br>
+            <input name="pw" type="password">
+            <br>
+            비밀번호 확인
+            <br>
+            <input name="pwcof" type="password">
+            <br>
+            성
+            <br>
+            <input name="lastname" type="text">
+            <br>
+            이름
+            <br>
+            <input name="firstname" type="text">
+            <br>
+            생년월일
+            <br>
+            <input name="birth" type="date">
+            <br>
+            연락처
+            <br>
+            <input name="phone" type="tel">
+            <br><br>
+            <input type="submit" value="sign up">
+        </form>
+    </div>
+</body>
+</html>

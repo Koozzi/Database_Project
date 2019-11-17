@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JHBox</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="JHBox">JHBox</h1>
+        <form method="POST" action="{% url 'signin' %}">
+            {% csrf_token %}
+            Username:
+            <br>
+            <input name="id"  type="text" placeholder="Username">
+            <br>
+            Password:
+            <br>
+            <input name="pw" type="password" placeholder="Password">
+            <br><br>
+            <button type="submit">로그인</button>
+        </form>
+        <a class="sign_up" href = "signup"><button>회원가입</button></a>
+    </div>
+</body>
+</html>
