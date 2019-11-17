@@ -85,6 +85,9 @@ DATABASES = {
         'USER': 'kchy666',
         'PASSWORD': 'rnclgns1!',
         'HOST': 'kchy666.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
+        }
     }
 }
 
