@@ -147,3 +147,16 @@ class movieactor(models.Model):
         return '%s - %s' % (self.movie_name, self.movie_actor)
 
 
+class pjh(models.Model):
+    pjh_id = models.AutoField(primary_key=True)
+    pjh_name = models.CharField(max_length=45, blank=True, null=True)
+    pjh_location = models.CharField(max_length=45, blank=True, null=True)
+    pjh_phone = models.CharField(max_length=45, blank=True, null=True)
+
+class timetable(models.Model):
+    id  = models.AutoField(primary_key=True)
+    movie_name = models.ForeignKey(movieinfo, on_delete=models.CASCADE)
+    date = models.DateField(blank=True, null=True)
+    theater_id = models.IntegerField(blank=True, null=True)
+    start_time = models.TimeField(blank=True, null=True)
+    pjh_id = models.ForeignKey(pjh, on_delete=models.CASCADE)
