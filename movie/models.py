@@ -121,28 +121,29 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-# class Movieinfo(models.Model):
-#     movie_id = models.AutoField(primary_key=True)
-#     movie_name = models.CharField(max_length=45, blank=True, null=True)
-#     movie_genre = models.CharField(max_length=45, blank=True, null=True)
-#     movie_open = models.DateField(blank=True, null=True)
-#     movie_director = models.CharField(max_length=45, blank=True, null=True)
-#     movie_runtime = models.IntegerField(blank=True, null=True)
-#     movie_age = models.IntegerField(blank=True, null=True)
-#     movie_booking_count = models.IntegerField(blank=True, null=True, default=0)
-#     movie_review_count = models.IntegerField(blank=True, null=True, default=0)
-#     movie_story = models.TextField(blank=True, null=True)
-#     movie_playing = models.IntegerField(blank=True, null=True)
-#     movie_score = models.FloatField(blank=True, null=True, default=0)
-#     movie_poster = models.ImageField(upload_to="poster")
-#     def __str__(self):
-#         return '%s - %s(%s)' % (self.movie_id, self.movie_name, self.movie_playing)
-#
-# class movieactor(models.Model):
-#     movie_name = models.ForeignKey(Movieinfo, on_delete=models.CASCADE)
-#     movie_actor = models.CharField(max_length=45, blank=True, null=True)
-#
-#     def __str__(self):
-#         return '%s - %s' % (self.movie_name, self.movie_actor)
+class movieinfo(models.Model):
+    movie_id = models.AutoField(primary_key=True)
+    movie_name = models.CharField(max_length=45, blank=True, null=True)
+    movie_genre = models.CharField(max_length=45, blank=True, null=True)
+    movie_open = models.DateField(blank=True, null=True)
+    movie_director = models.CharField(max_length=45, blank=True, null=True)
+    movie_runtime = models.IntegerField(blank=True, null=True)
+    movie_age = models.IntegerField(blank=True, null=True)
+    movie_booking_count = models.IntegerField(blank=True, null=True, default=0)
+    movie_review_count = models.IntegerField(blank=True, null=True, default=0)
+    movie_story = models.TextField(blank=True, null=True)
+    movie_playing = models.IntegerField(blank=True, null=True)
+    movie_score = models.FloatField(blank=True, null=True, default=0)
+    movie_poster = models.ImageField(upload_to="poster")
+    def __str__(self):
+        return '%s - %s(%s)' % (self.movie_id, self.movie_name, self.movie_playing)
+
+
+class movieactor(models.Model):
+    movie_name = models.ForeignKey(Movieinfo, on_delete=models.CASCADE)
+    movie_actor = models.CharField(max_length=45, blank=True, null=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.movie_name, self.movie_actor)
 
 
