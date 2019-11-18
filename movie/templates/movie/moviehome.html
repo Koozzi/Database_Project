@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for movieinfos in movie.all %}
+        {{movieinfos.movie_name}}
+        <img src="{{movieinfos.movie_poster.url}}" width=100px height=150px><br>
+    {% endfor %}
+</body>
+</html>

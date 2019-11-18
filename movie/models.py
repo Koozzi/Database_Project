@@ -140,7 +140,7 @@ class movieinfo(models.Model):
 
 
 class movieactor(models.Model):
-    movie_name = models.ForeignKey(Movieinfo, on_delete=models.CASCADE)
+    movie_name = models.ForeignKey(movieinfo, on_delete=models.CASCADE)
     movie_actor = models.CharField(max_length=45, blank=True, null=True)
 
     def __str__(self):
