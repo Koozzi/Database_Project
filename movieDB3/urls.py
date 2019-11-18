@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 import movie.views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('movieSelect/', movie.views.movieSelect, name='movieSelect'),
     path('signup/', movie.views.signup, name='signup'),
     path('signout/', movie.views.signout, name='signout'),
     path('', movie.views.signin, name='signin'),
-]
+] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
