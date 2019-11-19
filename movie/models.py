@@ -127,6 +127,8 @@ class movieinfo(models.Model):
     movie_genre = models.CharField(max_length=45, blank=True, null=True)
     movie_open = models.DateField(blank=True, null=True)
     movie_director = models.CharField(max_length=45, blank=True, null=True)
+    movie_actor1 = models.CharField(max_length=45, blank=True, null=True)
+    movie_actor2 = models.CharField(max_length=45, blank=True, null=True)
     movie_runtime = models.IntegerField(blank=True, null=True)
     movie_age = models.IntegerField(blank=True, null=True)
     movie_booking_count = models.IntegerField(blank=True, null=True, default=0)
@@ -137,15 +139,6 @@ class movieinfo(models.Model):
     movie_poster = models.ImageField(upload_to="poster")
     def __str__(self):
         return '%s - %s(%s)' % (self.movie_id, self.movie_name, self.movie_playing)
-
-
-class movieactor(models.Model):
-    movie_name = models.ForeignKey(movieinfo, on_delete=models.CASCADE)
-    movie_actor = models.CharField(max_length=45, blank=True, null=True)
-
-    def __str__(self):
-        return '%s - %s' % (self.movie_name, self.movie_actor)
-
 
 class pjh(models.Model):
     pjh_id = models.AutoField(primary_key=True)
@@ -160,3 +153,10 @@ class timetable(models.Model):
     theater_id = models.IntegerField(blank=True, null=True)
     start_time = models.TimeField(blank=True, null=True)
     pjh_id = models.ForeignKey(pjh, on_delete=models.CASCADE)
+
+# class movieactor(models.Model):
+#     movie_name = models.ForeignKey(movieinfo, on_delete=models.CASCADE)
+#     movie_actor = models.CharField(max_length=45, blank=True, null=True)
+#
+#     def __str__(self):
+#         return '%s - %s' % (self.movie_name, self.movie_actor)
