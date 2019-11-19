@@ -22,9 +22,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('movieSelect/', movie.views.movieSelect, name='movieSelect'),
     path('signup/', movie.views.signup, name='signup'),
     path('signout/', movie.views.signout, name='signout'),
     path('', movie.views.signin, name='signin'),
     path('moviehome/', movie.views.moviehome, name='moviehome'),
+    path('realinfo/', movie.views.realinfo, name='realinfo'),
+    path('actorinfo/', movie.views.actorinfo, name='actorinfo'),
+    path('directorinfo/', movie.views.directorinfo, name='directorinfo'),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

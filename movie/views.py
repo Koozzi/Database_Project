@@ -7,6 +7,15 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
 
+def realinfo(request):
+    return render(request, 'movie/realinfo.html')
+
+def actorinfo(request):
+    return render(request, 'movie/actorinfo.html')
+
+def directorinfo(request):
+    return render(request, 'movie/directorinfo.html')
+
 def moviehome(request):
     if request.user.is_authenticated:
         movie = movieinfo.objects.filter(movie_playing=1)
