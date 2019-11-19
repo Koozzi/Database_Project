@@ -23,12 +23,6 @@ def moviehome(request):
     else:
         return render(request, 'movie/not_logged_in.html')
 
-def movieSelect(request):
-    if request.user.is_authenticated:
-        return render(request, 'movie/movieSelect.html')
-    else:
-        return render(request, 'movie/not_logged_in.html')
-
 def signup(request):
     if request.method == "POST":
         if request.POST["pw"]==request.POST["pwcof"]:
@@ -41,7 +35,7 @@ def signup(request):
                 phone=request.POST['phone'],
             )
             auth.login(request, user)
-            return redirect('movieSelect')
+            return redirect('moviehome')
         return render(request, 'movie/signup.html')
     return render(request, 'movie/signup.html')
 
@@ -52,7 +46,7 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('movieSelect')
+            return redirect('moviehome')
         else:
             return render(request, 'movie/login.html')
     else:
