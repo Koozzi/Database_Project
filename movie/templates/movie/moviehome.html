@@ -9,9 +9,9 @@
     {% for movieinfos in movie.all %}
         <img src="{{movieinfos.movie_poster.url}}" width=100px height=150px><br>
         {{movieinfos.movie_name}}<br>
-        장르 | {{movieinfos.movie_genre}}
-        감독 | {{movieinfos.movie_director}}
-        출연 |
+        장르 | {{movieinfos.movie_genre}}<br>
+        감독 | {{movieinfos.movie_director}}<br>
+        출연 |<br>
     {% endfor %}
 </body>
 </html>
