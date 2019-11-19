@@ -1,27 +1,30 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>JHBox2</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script type="text/javascript" src="/static/js/index.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1 class="JHBox">JHBox</h1>
-        <form method="POST" action="{% url 'signin' %}">
-            {% csrf_token %}
-            Username:
-            <br>
-            <input name="id"  type="text" placeholder="Username">
-            <br>
-            Password:
-            <br>
-            <input name="pw" type="password" placeholder="Password">
-            <br><br>
-            <button type="submit">로그인</button>
-        </form>
-        <a class="sign_up" href = "signup"><button>회원가입</button></a>
-    </div>
+  <div id='login'>
+    <h1>JHBox<span class='orangestop'>.</span></h1>
+    <form  action="{% url 'signin' %}" method="POST">
+      {% csrf_token %}
+      <span class='input'>
+        <span class='icon username-icon fontawesome-user'></span>
+        <input name="id" type='text' class='username' placeholder='Username'></span>
+      <span class='input'>
+        <span class='password-icon-style icon password-icon fontawesome-lock'></span>
+        <input name="pw" type='password' class='password' placeholder='Password'>
+      </span>
+      <div class='forgot'>Forgot Details?</div>
+      <div class='divider'></div>
+      <div class=button><button type="submit">LOG IN</button></div>
+      <p>Don't have an account? <span class='reg'>Register.</span></p>
+    </form>
+  </div>
 </body>
 </html>
