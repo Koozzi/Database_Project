@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>현재상영작</h1>
+    <a href="{% url 'signout' %}">로그아웃</a><br>
     {% for movieinfos in movie.all %}
         <img src="{{movieinfos.movie_poster.url}}" width=100px height=150px><br>
         {{movieinfos.movie_age}} {{movieinfos.movie_name}}<br>

@@ -8,8 +8,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
 
 def moviehome(request):
-    movie = movieinfo.objects.filter(movie_playing=1)
-    return render(request, 'movie/moviehome.html', {'movie': movie})
+    if request.user.is_authenticated:
+        movie = movieinfo.objects.filter(movie_playing=1)
+        return render(request, 'movie/moviehome.html', {'movie': movie})
+    else:
+        return render(request, 'movie/not_logged_in.html')
 
 def movieSelect(request):
     if request.user.is_authenticated:
