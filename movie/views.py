@@ -2,7 +2,7 @@
 
 # Create your views here.
 from __future__ import unicode_literals
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
