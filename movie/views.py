@@ -19,7 +19,7 @@ def directorinfo(request):
 def moviehome(request):
     if request.user.is_authenticated:
         movie = movieinfo.objects.filter(movie_playing =1)
-        movie1 = movieinfo.objects.filter(movie_playing=0)
+        movie1 = movieinfo.objects.filter(movie_playing=2)
         return render(request, 'movie/moviehome.html', {
             'movie' : movie,
             'movie1' : movie1,
