@@ -59,3 +59,9 @@ def signin(request):
 def signout(request):
     logout(request)
     return redirect('signin')
+
+def detail(request, pk):
+    moviedetail = get_object_or_404(movieinfo, pk=pk)
+    return render(request, 'movie/detail.html', {
+        'moviedetail':moviedetail
+    })

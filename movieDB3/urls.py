@@ -29,4 +29,5 @@ urlpatterns = [
     path('realinfo/', movie.views.realinfo, name='realinfo'),
     path('actorinfo/', movie.views.actorinfo, name='actorinfo'),
     path('directorinfo/', movie.views.directorinfo, name='directorinfo'),
+    path('detail/<int:pk>', movie.views.detail, name='detail')
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
