@@ -16,5 +16,15 @@
         출연 | <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor1}}</a> , <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor2}}</a>
         <br>
     {% endfor %}
+    <h1>개봉예정작</h1>
+    {% for movieinfos in movie1.all %}
+        <a href="{% url 'realinfo'%}"><img src="{{movieinfos.movie_poster.url}}" width=100px height=150px></a><br>
+        {{movieinfos.movie_age}}
+        <a href="{% url 'realinfo'%}">{{movieinfos.movie_name}}</a><br>
+        장르 | {{movieinfos.movie_genre}}<br>
+        감독 | <a href="{% url 'directorinfo' %}">{{movieinfos.movie_director}}</a><br>
+        출연 | <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor1}}</a> , <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor2}}</a>
+        <br>
+    {% endfor %}
 </body>
 </html>

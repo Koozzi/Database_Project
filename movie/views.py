@@ -18,8 +18,12 @@ def directorinfo(request):
 
 def moviehome(request):
     if request.user.is_authenticated:
-        movie = movieinfo.objects.filter(movie_playing=1)
-        return render(request, 'movie/moviehome.html', {'movie': movie})
+        movie = movieinfo.objects.filter(movie_playing =1)
+        movie1 = movieinfo.objects.filter(movie_playing=0)
+        return render(request, 'movie/moviehome.html', {
+            'movie' : movie,
+            'movie1' : movie1,
+        })
     else:
         return render(request, 'movie/not_logged_in.html')
 
