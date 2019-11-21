@@ -14,10 +14,10 @@
     <form  action="{% url 'signin' %}" method="POST">
       {% csrf_token %}
       <span class='input'>
-        <span class='icon username-icon fontawesome-user'></span>
+
         <input name="id" type='text' class='username' placeholder='Username'></span>
       <span class='input'>
-        <span class='password-icon-style icon password-icon fontawesome-lock'></span>
+
         <input name="pw" type='password' class='password' placeholder='Password'>
       </span>
       <div class='forgot'>Forgot Details?</div>

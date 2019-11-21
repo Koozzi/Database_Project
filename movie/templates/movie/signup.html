@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>JHBox</title>
+    <title>JHBOX</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <script type="text/javascript" src="/static/js/signup.js"></script>
 </head>
+
 <body>
     <div class = "container">
-        <h1>JHBox</h1>
+        <h1>JHBOX<span class='orangestop'>.</span></h1>
         <form method="POST" action="{% url 'signup' %}">
-        {% csrf_token %}
-            아이디
-            <br>
-            <input name="id"  type="text">
-            <br>
-            비밀번호
-            <br>
-            <input name="pw" type="password">
-            <br>
-            비밀번호 확인
-            <br>
-            <input name="pwcof" type="password">
-            <br>
-            성
-            <br>
-            <input name="lastname" type="text">
-            <br>
-            이름
-            <br>
-            <input name="firstname" type="text">
-            <br>
-            생년월일
-            <br>
-            <input name="birth" type="date">
-            <br>
-            연락처
-            <br>
-            <input name="phone" type="tel">
-            <br><br>
-            <input type="submit" value="sign up">
+            {% csrf_token %}
+            <span class='input'>
+                <p>ID</p>
+                <input name="id"  type="text" class="id" ></span>
+            <span class='input'>
+                <p>PASSWORD</p>
+                <input name="pw" type="password" class="pw"></span>
+            <span class='input'>
+                <p>CONFIRM PASSWORD</p>
+                <input name="pwcof" type="password" class="pwcof"></span>
+            <span class='input'>
+                <p>LAST NAME</p>
+                <input name="lastname" type="text" class="lastname"></span>
+            <span class='input'>
+                <p>FIRST NAME</p>
+                <input name="firstname" type="text" class="firstname"></span>
+            <span class='input'>
+                <p>BIRTH DATE</p>
+                <input name="birth" type="date" class="birth"></span>
+            <span class='input'>
+                <p>PHONE NUMBER</p>
+                <input name="phone" type="tel" class="phone"></span>
+        <div class='divider'></div>
+        <div class=button><button type="submit">SIGN UP</button></div>
         </form>
     </div>
 </body>
