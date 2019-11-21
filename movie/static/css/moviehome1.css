@@ -65,3 +65,11 @@ section {
     border: 1px solid rgb(123, 123, 123);
     padding: 5px 0;
 }
+
+.owl-carousel .nav-btn{
+      height: 47px;
+      position: absolute;
+      width: 26px;
+      cursor: pointer;
+      top: 100px !important;
+  }
