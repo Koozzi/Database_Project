@@ -130,7 +130,7 @@ class movieinfo(models.Model):
     movie_actor1 = models.CharField(max_length=45, blank=True, null=True)
     movie_actor2 = models.CharField(max_length=45, blank=True, null=True)
     movie_runtime = models.IntegerField(blank=True, null=True)
-    movie_age = models.IntegerField(blank=True, null=True)
+    movie_age = models.CharField(max_length=45, blank=True, null=True)
     movie_booking_count = models.IntegerField(blank=True, null=True, default=0)
     movie_review_count = models.IntegerField(blank=True, null=True, default=0)
     movie_story = models.TextField(blank=True, null=True)
