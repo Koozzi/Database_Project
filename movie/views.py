@@ -23,6 +23,7 @@ def moviehome(request):
         return render(request, 'movie/moviehome.html', {
             'movie' : movie,
             'movie1' : movie1,
+            'user' : request.user,
         })
     else:
         return render(request, 'movie/not_logged_in.html')
