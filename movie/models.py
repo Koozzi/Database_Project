@@ -145,6 +145,9 @@ class pjh(models.Model):
     pjh_name = models.CharField(max_length=45, blank=True, null=True)
     pjh_location = models.CharField(max_length=45, blank=True, null=True)
     pjh_phone = models.CharField(max_length=45, blank=True, null=True)
+    def __str__(self):
+        return '%s'%(self.pjh_name)
+
 
 class timetable(models.Model):
     id  = models.AutoField(primary_key=True)
@@ -153,6 +156,8 @@ class timetable(models.Model):
     theater_id = models.IntegerField(blank=True, null=True)
     start_time = models.TimeField(blank=True, null=True)
     pjh_id = models.ForeignKey(pjh, on_delete=models.CASCADE)
+    def __str__(self):
+        return '%s  /  %s  /  %s  /  %s상영  /  %s'%(self.movie_name, self.date, self.pjh_id, self.theater_id, self.start_time)
 
 
 class booking(models.Model):
