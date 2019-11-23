@@ -1,36 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>현재상영작</h1>-->
-<!--    Hi, {{user}} !!-->
-<!--    <a href="{% url 'signout' %}">로그아웃</a><br>-->
-<!--    {% for movieinfos in movie.all %}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" width=100px height=150px></a><br>-->
-<!--        {{movieinfos.movie_age}}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}">{{movieinfos.movie_name}}</a><br>-->
-<!--        장르 | {{movieinfos.movie_genre}}<br>-->
-<!--        감독 | <a href="{% url 'directorinfo' %}">{{movieinfos.movie_director}}</a><br>-->
-<!--        출연 | <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor1}}</a> , <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor2}}</a>-->
-<!--        <br>-->
-<!--    {% endfor %}-->
-<!--    <h1>개봉예정작</h1>-->
-<!--    {% for movieinfos in movie1.all %}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" width=100px height=150px></a><br>-->
-<!--        {{movieinfos.movie_age}}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}">{{movieinfos.movie_name}}</a><br>-->
-<!--        장르 | {{movieinfos.movie_genre}}<br>-->
-<!--        감독 | <a href="{% url 'directorinfo' %}">{{movieinfos.movie_director}}</a><br>-->
-<!--        출연 | <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor1}}</a> , <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor2}}</a>-->
-<!--        <br>-->
-<!--    {% endfor %}-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,29 +10,6 @@
     <meta charset="UTF-8">
     <title>JHBox</title>
 </head>
-<!--<body>-->
-<!--    <h1>Current Playing</h1>-->
-<!--    Hi, {{user}} !! <a href="{% url 'signout' %}">LOG_OUT</a><br>-->
-<!--    {% for movieinfos in movie.all %}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" width=100px height=150px></a><br>-->
-<!--        {{movieinfos.movie_age}}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}">{{movieinfos.movie_name}}</a><br>-->
-<!--        장르 | {{movieinfos.movie_genre}}<br>-->
-<!--        감독 | <a href="{% url 'directorinfo' %}">{{movieinfos.movie_director}}</a><br>-->
-<!--        출연 | <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor1}}</a> , <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor2}}</a>-->
-<!--        <br>-->
-<!--    {% endfor %}-->
-<!--    <h1>Comming Soon</h1>-->
-<!--    {% for movieinfos in movie1.all %}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" width=100px height=150px></a><br>-->
-<!--        {{movieinfos.movie_age}}-->
-<!--        <a href="{% url 'detail' movieinfos.movie_id%}">{{movieinfos.movie_name}}</a><br>-->
-<!--        장르 | {{movieinfos.movie_genre}}<br>-->
-<!--        감독 | <a href="{% url 'directorinfo' %}">{{movieinfos.movie_director}}</a><br>-->
-<!--        출연 | <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor1}}</a> , <a href="{% url 'actorinfo' %}">{{movieinfos.movie_actor2}}</a>-->
-<!--        <br>-->
-<!--    {% endfor %}-->
-<!--</body>-->
 <body>
     <div id="container">
         <header>
@@ -74,31 +18,23 @@
                 <div class="login">
                     Hi,{{user}} !!
                     <a href="{% url 'signout' %}">로그아웃</a><br>
-
                 </div>
             </div>
-
-
             <nav>
                 <div class="nav-item">
                     <a class="nav-item-anchor active" href="#">영화 정보 / 리뷰</a>
                 </div>
-
-
                 <div class="nav-item">
                     <a class="nav-item-anchor" href="#">영화 랭킹</a>
                 </div>
-
                 <div class="nav-item">
                     <a class="nav-item-anchor" href="#">상영관 위치</a>
                 </div>
-
                 <div class="nav-item">
                     <a class="nav-item-anchor" href="#">예매</a>
                 </div>
             </nav>
         </header>
-
         <section>
             <div class="nowcom">
                 <h2>상영 중</h2>
@@ -108,26 +44,8 @@
                 <div class="item">
                     <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>
                 </div>
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
                 {% endfor %}
             </div>
-
-
-
             <div class="nowcom">
                 <h2>상영 예정</h2>
             </div>
@@ -153,34 +71,8 @@
                 </div>
                 {% endfor %}
             </div>
-<!--            <div id="c1" class="owl-carousel owl-theme">-->
-<!--                {% for movieinfos in movie2.all %}-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-<!--                {% endfor %}-->
-<!--            </div>-->
-
         </section>
     </div>
-
-
-
     <script>
         $('#c1, #c2').owlCarousel({
             loop: true,
@@ -201,5 +93,4 @@
         })
     </script>
 </body>
-
 </html>
