@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div onclick="select_date('{{movie_message}}','{{pjh_message}}', '2019-12-25');">2019-12-25</div><br>
+    <script>
+        function select_date(movie_id, pjh_id, date){
+            console.log(movie_id);
+            console.log(pjh_id);
+            console.log(date);
+            window.location.href=`${window.location.origin}/booktime/?date=${date}&pjh=${pjh_id}&movie=${movie_id}`
+        }
+    </script>
+</body>
+</html>

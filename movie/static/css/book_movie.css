@@ -1,0 +1,8 @@
+.movie_poster_item {
+   cursor: pointer;
+}
+
+.movie_poster_size {
+    width: 150px;
+    height: auto;
+}

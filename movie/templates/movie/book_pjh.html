@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for pjh in pjhs %}
+        <div onclick="select_pjh( '{{ pjh.pjh_id }}', '{{movie_message}}');">{{pjh.pjh_name}}</div><br>
+        {{pjh.pjh_location}}<br>
+        {{pjh.pjh_phone}}<br>
+        <br>
+    {% endfor %}
+    <script>
+        function select_pjh(pjh_id, movie_id) {
+            console.log(pjh_id);
+            console.log(movie_id);
+            window.location.href=`${window.location.origin}/bookdate/?pjh=${pjh_id}&movie=${movie_id}`
+        }
+    </script>
+</body>
+</html>

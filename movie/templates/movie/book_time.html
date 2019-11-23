@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for start_time in time.all %}
+        <div onclick="select_time('{{start_time.start_time}}', '{{movie_message}}','{{pjh_message}}','{{date_message}}')";>{{start_time.start_time}}</div><br>
+    {% endfor %}
+    <script>
+        function select_time(time, movie, pjh, date) {
+            console.log(time);
+            console.log(movie);
+            console.log(pjh);
+            console.log(date);
+            window.location.href=`${window.location.origin}/bookseat/?time=${time}&date=${date}&pjh=${pjh}&movie=${movie}`
+        }
+    </script>
+</body>
+</html>
