@@ -115,6 +115,11 @@ def signout(request):
 
 def detail(request, pk):
     moviedetail = get_object_or_404(movieinfo, pk=pk)
+    movie = request.GET.get('id')
+    movie_message = "{}".format(movie)
+    reviews = review.objects.select_related("movie_id").filter(movie_id=movie_message)
     return render(request, 'movie/detail.html', {
-        'moviedetail':moviedetail
+        'moviedetail': moviedetail,
+        'reviews': reviews,
+        'id': id,
     })
