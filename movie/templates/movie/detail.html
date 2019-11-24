@@ -12,5 +12,12 @@
     출연 | {{moviedetail.movie_actor1}}, {{moviedetail.movie_actor2}}<br>
     <h2>줄거리</h2><br>
     {{moviedetail.movie_story}}
+    <br>
+    <br>
+    <h2>리뷰</h2>
+    {% for rev in reviews.all %}
+        {{rev.review_grade}}    {{rev.username}}<br>
+        {{rev.review_text}}<br><br>
+    {% endfor %}
 </body>
 </html>
