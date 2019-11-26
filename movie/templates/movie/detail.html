@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+    {% if user.is_active %}
+        Hi,{{user}} !!
+        <a href="{% url 'signout' %}">로그아웃</a><br>
+    {% else %}
+        <a href="{% url 'signin' %}">로그인</a>
+    {% endif %}
     <h1>{{moviedetail.movie_name}} </h1>
     <img src="{{moviedetail.movie_poster.url}}" width=100px height=150px><br>
     연령 | {{moviedetail.movie_age}}<br>
