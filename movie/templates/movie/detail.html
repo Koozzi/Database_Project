@@ -16,6 +16,15 @@
     <br>
     <br>
     <h2>리뷰</h2>
+    {% if request.user.is_active %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">댓글 작성</button>
+    </form>
+    {% else %}
+    <div class="alert alert-warning">로그인된 사용자만 댓글을 작성할 수 있습니다.</div>
+    {% endif %}
     {% for rev in reviews.all %}
         {{rev.review_grade}}    {{rev.username}}<br>
         {{rev.review_text}}<br><br>

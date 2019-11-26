@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
+from .forms import *
 
 def moviehome(request):
     if request.user.is_authenticated:
@@ -115,6 +116,16 @@ def signout(request):
 
 def detail(request, pk):
     moviedetail = get_object_or_404(movieinfo, pk=pk)
+    if request.method == "POST":
+        form = reviewForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit = False)
+            comment.username = request.user
+            comment.movie_id = moviedetail
+            comment.save()
+            return redirect('detail', pk = pk)
+    else:
+        form = reviewForm()
     movie = request.GET.get('id')
     movie_message = "{}".format(movie)
     reviews = review.objects.select_related("movie_id").filter(movie_id=movie_message)
@@ -122,4 +133,5 @@ def detail(request, pk):
         'moviedetail': moviedetail,
         'reviews': reviews,
         'id': id,
+        'form':form,
     })
