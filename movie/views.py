@@ -128,7 +128,7 @@ def detail(request, pk):
         form = reviewForm()
     movie = request.GET.get('id')
     movie_message = "{}".format(movie)
-    reviews = review.objects.select_related("movie_id").filter(movie_id=movie_message)
+    reviews = review.objects.select_related("movie_id").filter(movie_id=pk)
     return render(request, 'movie/detail.html', {
         'moviedetail': moviedetail,
         'reviews': reviews,
