@@ -41,11 +41,11 @@
             </div>
             <div id="c1" class="owl-carousel owl-theme">
                 {% for movieinfos in movie.all %}
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-                <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"
-                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>
+                <div class="item">
+                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>
+                </div>
+<!--                <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"-->
+<!--                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>-->
                 {% endfor %}
             </div>
             <div class="nowcom">
@@ -53,11 +53,11 @@
             </div>
                 <div id="c1" class="owl-carousel owl-theme">
                 {% for movieinfos in movie1.all %}
-<!--                <div class="item">-->
-<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
-<!--                </div>-->
-                    <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"
-                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>
+                <div class="item">
+                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>
+                </div>
+<!--                    <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"-->
+<!--                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>-->
                 {% endfor %}
             </div>
         </section>
