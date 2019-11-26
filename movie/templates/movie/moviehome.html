@@ -16,8 +16,12 @@
             <div class="logo">
                 <img src="/static/image/logo.PNG" alt="logo">
                 <div class="login">
+                    {% if user.is_active %}
                     Hi,{{user}} !!
                     <a href="{% url 'signout' %}">로그아웃</a><br>
+                    {% else %}
+                    <a href="{% url 'signin' %}">로그인</a>
+                    {% endif %}
                 </div>
             </div>
             <nav>
