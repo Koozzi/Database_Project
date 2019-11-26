@@ -134,4 +134,5 @@ def detail(request, pk):
         'reviews': reviews,
         'id': id,
         'form':form,
+        'user':request.user,
     })
