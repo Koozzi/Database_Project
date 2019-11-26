@@ -112,7 +112,7 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return redirect('signin')
+    return redirect('moviehome')
 
 def detail(request, pk):
     moviedetail = get_object_or_404(movieinfo, pk=pk)
