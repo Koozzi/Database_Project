@@ -9,7 +9,7 @@ from django.contrib import auth
 from .forms import *
 
 def moviehome(request):
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         movie = movieinfo.objects.filter(movie_playing =1)
         movie1 = movieinfo.objects.filter(movie_playing=2)
         return render(request, 'movie/moviehome.html', {
@@ -17,8 +17,8 @@ def moviehome(request):
             'movie1' : movie1,
             'user' : request.user,
         })
-    else:
-        return render(request, 'movie/not_logged_in.html')
+    # else:
+    #     return render(request, 'movie/not_logged_in.html')
 
 def bookmovie(request):
     current_movie = movieinfo.objects.filter(movie_playing=1)
