@@ -1,0 +1,75 @@
+#container {
+    margin: 0;
+    font-family: 'helvetica neue', 'Helvetica', 'AppleSDGothicNeo-Medium', 'AppleGothic', 'sans-serif';
+}
+
+body {
+    background-color: #424242;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 1px 1px 8px gray;
+    z-index: 100;
+}
+
+nav {
+    background: white;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-transform: uppercase;
+}
+
+nav .logo {
+    float: left;
+    width: 240px;
+}
+
+.nav-item {
+    padding: 0;
+    width: 15%;
+    font-size: x-large;
+    color: rgb(44, 62, 80);
+    margin: 0;
+}
+
+.nav-item a {
+    color: rgb(44, 62, 80);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-item a:hover {
+    background: #f39c12;
+    transition: 0.2s;
+}
+
+section {
+    max-width: 1000px;
+    margin: auto;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    margin-top: 40px;
+}
+
+.nowcom {
+    text-align: center;
+    font-weight: 800;
+    font-size: large;
+    color: rgb(255, 255, 255);
+}
+
+.login {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid rgb(123, 123, 123);
+    padding: 5px 0;
+    float: right;
+}

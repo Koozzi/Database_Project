@@ -1,22 +1,118 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/book_pjh.css' %}">
+    <title>JHBox</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <style>
+        button {
+            background-color: papayawhip;
+            border: none;
+            color: black;
+            padding: 15px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        button:focus {
+            background: orange;
+        }
+        button:hover {
+            transition: 0.5s;
+            background-color: orange;
+        }
+        .back, .next{
+            background: orange;
+        }
+    </style>
 </head>
 <body>
-    {% for pjh in pjhs %}
-        <div onclick="select_pjh( '{{ pjh.pjh_id }}', '{{movie_message}}');">{{pjh.pjh_name}}</div><br>
-        {{pjh.pjh_location}}<br>
-        {{pjh.pjh_phone}}<br>
-        <br>
-    {% endfor %}
+    <div id="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <a class="nav-item-anchor active" href="#"><img src="/static/image/logo.PNG" alt="logo" width="200px"></a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-item-anchor active" href="#">영화 정보 / 리뷰</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-item-anchor" href="#">영화 랭킹</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-item-anchor" href="#">상영관 위치</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-item-anchor" href="./timetable.html">예매</a>
+                </div>
+                <div class="login">
+                    {% if user.is_active %}
+                    Hi,{{user}} !!
+                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                    {% else %}
+                    <a href="{% url 'signin' %}">로그인</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+    <br>
+        <section>
+            <div style="position:relative;text-align: center;">
+                <iframe src="https://www.google.com/maps/d/embed?mid=1oAZ8pGNKI_tHNsYsCp3Ux5IfLtRdM0A0" width="600" height="450"></iframe>
+                <div style="position:absolute;top:0px;left:19%;background:#424242;width:620px;height:40px;padding-bottom: 30px;"><h2 style="color: white;">영화관</h2></div>
+            </div>
+            <br><br>
+            <div style="text-align: center;">
+                {% for pjh in pjhs %}
+                    <button class="theater" value="{{pjh.pjh_name}}"><div onclick="select_pjh( '{{ pjh.pjh_id }}', '{{movie_message}}');">{{pjh.pjh_name}}</div><br></button>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button[name=ok]").click(function () {
+                $("form[name=groupMemberInfo]")
+                .attr({ action: "groupMemberManage.php?value="+$(this).val(), method: "post" })
+                .submit();
+            });
+        });
+</script>
     <script>
         function select_pjh(pjh_id, movie_id) {
             console.log(pjh_id);
             console.log(movie_id);
             window.location.href=`${window.location.origin}/bookdate/?pjh=${pjh_id}&movie=${movie_id}`
         }
+        $('#c1, #c2').owlCarousel({
+            loop: true,
+            margin: 15,
+            nav: true,
+            autoplay: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
     </script>
 </body>
+
+
 </html>
