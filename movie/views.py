@@ -49,17 +49,21 @@ def bookdate(request):
 
 def booktime(request):
     movie = request.GET.get('movie')
-    pjh = request.GET.get('pjh')
+    pjh_id = request.GET.get('pjh')
     date = request.GET.get('date')
     movie_message = "{}".format(movie)#movie_message 에는 고객이 선택한 영화 고유 id가 들어있다.
-    pjh_message = "{}".format(pjh)#pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
+    pjh_message = "{}".format(pjh_id)#pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
     date_message = "{}".format(date)#date_message 에는 고객이 선택한 날짜가 들어있다.
-    time = timetable.objects.select_related("movie_name").filter(movie_name=movie_message, pjh_id=pjh_message, date=date_message)
+    movie_selected = movieinfo.objects.filter(movie_id = movie_message)
+    pjh_selected = pjh.objects.filter(pjh_id = pjh_message)
+    timetables = timetable.objects.select_related("movie_name").filter(movie_name=movie_message, pjh_id=pjh_message, date=date_message)
     context={
         'movie_message': movie_message,
         'pjh_message': pjh_message,
         'date_message': date_message,
-        'time': time,
+        'timetables': timetables,
+        'movie_selected': movie_selected,
+        "pjh_selected": pjh_selected,
     }
     return render(request, 'movie/book_time.html', context)
 
