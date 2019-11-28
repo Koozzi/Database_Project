@@ -1,25 +1,5 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <div onclick="select_date('{{movie_message}}','{{pjh_message}}', '2019-12-25');">2019-12-25</div><br>-->
-<!--    <script>-->
-<!--        function select_date(movie_id, pjh_id, date){-->
-<!--            console.log(movie_id);-->
-<!--            console.log(pjh_id);-->
-<!--            console.log(date);-->
-<!--            window.location.href=`${window.location.origin}/booktime/?date=${date}&pjh=${pjh_id}&movie=${movie_id}`-->
-<!--        }-->
-<!--    </script>-->
-<!--</body>-->
-<!--</html>-->
-
-<!--<html lang="en">-->
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     {% load static %}
     <meta charset="UTF-8">
@@ -29,9 +9,7 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700,300'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="{% static 'css/book_date.css' %}">
-
-    <title>Date Picker</title>
-
+    <title>JHBox</title>
 </head>
 
 <body>
@@ -39,27 +17,22 @@
         <header>
             <nav>
                 <div class="logo">
-                    <a class="nav-item-anchor active" href="#"><img src="/static/image/logo.PNG" alt="logo"
-                            width="200px"></a>
+                    <a class="nav-item-anchor active" href="#"><img src="/static/image/logo.PNG" alt="logo" width="200px"></a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-item-anchor active" href="#">영화 정보 / 리뷰</a>
                 </div>
-
-
                 <div class="nav-item">
                     <a class="nav-item-anchor" href="#">영화 랭킹</a>
                 </div>
-
                 <div class="nav-item">
                     <a class="nav-item-anchor" href="#">상영관 위치</a>
                 </div>
-
                 <div class="nav-item">
                     <a class="nav-item-anchor" href="./timetable.html">예매</a>
                 </div>
                 <div class="login">
-                    Hi,{{user}} !!
+                    Hi, {{user}} !!
                     <a href="{% url 'signout' %}">로그아웃</a><br>
                 </div>
             </nav>
@@ -102,9 +75,4 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="/static/js/date_picker.js"></script>
 </body>
-
-
-
-
-
 </html>
