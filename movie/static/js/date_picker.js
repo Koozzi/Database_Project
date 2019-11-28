@@ -185,16 +185,14 @@ $(".cal_head span").text(monthTextArray[month] + " " + year);
 drawCal(getMonthInfo(year, month));
 
 $("#cal").on("click", ".want_date", function (e) {
-
-  e.preventDefault();
-  // $(".want_date").css("background-color",'papayawhip');
-  $(this).css("background-color","orange");
-  $(this).parent().addClass("circle");
-  var s = $(this).text()
-  // s = s.split('<');
-  var outputDate = monthTextArray[month] + " " + s + ", " + year;
-  inputDate = year + "-" + month + "-" + s;
-  console.log(outputDate);
-  $("#outputText").text(outputDate);
-  $("#dateinput").val(inputDate);
+    e.preventDefault();
+    $(this).css("background-color","orange");
+    $(this).parent().addClass("circle");
+    var s = $(this).text()
+    var outputDate = monthTextArray[month] + " " + s + ", " + year;
+    real_month = month+1
+    inputDate = year + "-" + real_month + "-" + s;
+    console.log(outputDate);
+    $("#outputText").text(outputDate);
+    $("#dateinput").val(inputDate);
 });

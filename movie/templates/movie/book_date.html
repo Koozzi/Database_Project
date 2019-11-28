@@ -93,12 +93,6 @@
     <script>
         var inputDate;
         function select_date(movie_id, pjh_id){
-            $("#cal").on("click", ".want_date", function () {
-                $(".want_date").css("background-color",'papayawhip');
-                $(this).css("background-color","orange");
-                var s = $(this).text();
-                inputDate = year + "-" + month + "-" + s;
-            });
             console.log(movie_id);
             console.log(pjh_id);
             console.log(inputDate);
