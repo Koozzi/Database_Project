@@ -84,7 +84,7 @@
 
                 <div class="cc cal_output paper-shadow-top-z-1">
                     <div id ="asd" onclick="select_date('{{movie_message}}','{{pjh_message}}');">
-                        <button>다</button>
+                        <button>다음</button>
                     </div>
                 </div>
             </div><!-- 자기 내용 넣으세요 -->
@@ -96,7 +96,7 @@
     <script>
         var inputDate;
         function select_date(movie_id, pjh_id){
-            $("#cal").on("click", ".want_date", function () {
+            $("#cal").on("click", ".want_date", function (e) {
               $(".want_date").css("background-color",'papayawhip');
               $(this).css("background-color","orange");
               var s = $(this).text()
