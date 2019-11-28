@@ -90,15 +90,12 @@
             </div><!-- 자기 내용 넣으세요 -->
         </section>
     </div>
-
-
-
     <script>
         var inputDate;
         function select_date(movie_id, pjh_id){
             $("#cal").on("click", ".want_date", function (e) {
-              // $(".want_date").css("background-color",'papayawhip');
-              // $(this).css("background-color","orange");
+              $(".want_date").css("background-color",'papayawhip');
+              $(this).css("background-color","orange");
               var s = $(this).text()
               inputDate = year + "-" + month + "-" + s;
             });
@@ -109,10 +106,8 @@
             window.location.href=`${window.location.origin}/booktime/?date=${inputDate}&pjh=${pjh_id}&movie=${movie_id}`
         }
     </script>
-
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-<script src="/static/js/date_picker.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src="/static/js/date_picker.js"></script>
 </body>
 
 
