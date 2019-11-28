@@ -71,17 +71,16 @@ def bookseat(request):
     movie = request.GET.get('movie')
     pjh = request.GET.get('pjh')
     date = request.GET.get('date')
-    seat = request.GET.get('seat')
-    movie_message = "{}".format(movie)#movie_message 에는 고객이 선택한 영화 고유 id가 들어있다.
-    pjh_message = "{}".format(pjh)#pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
-    date_message = "{}".format(date)#date_message 에는 고객이 선택한 날짜가 들어있다.
-    seat_message = "{}".format(seat)#seat_message 에는 고객이 선택한 자리가 들어있다.
-
+    time = request.GET.get('time')
+    movie_message = "{}".format(movie)  #movie_message 에는 고객이 선택한 영화 고유 id가 들어있다.
+    pjh_message = "{}".format(pjh)      #pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
+    date_message = "{}".format(date)    #date_message 에는 고객이 선택한 날짜가 들어있다.
+    time_message = "{}".format(time)    #time_message 에는 고객이 선택한 시간이 들어있다.
     context={
         'movie_message': movie_message,
         'pjh_message': pjh_message,
         'date_message': date_message,
-        'seat_message': seat_message,
+        'time_message': time_message,
     }
     return render(request, 'movie/book_seat.html', context)
 
