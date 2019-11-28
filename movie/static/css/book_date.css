@@ -175,10 +175,10 @@ body .cal_output {
                                   not supported by any browser */
 }
 
-#dateinput {
-  visibility: hidden;
-  width: 0;
-}
+/*#dateinput {*/
+/*  visibility: hidden;*/
+/*  width: 0;*/
+/*}*/
 
 #outputText {
   margin-top:1.2%;
