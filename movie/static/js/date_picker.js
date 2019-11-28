@@ -151,20 +151,20 @@ $(".button_right").click(function () {
 
 });
 
-$("#cal").on("click", ".want_date", function (e) {
-
-  e.preventDefault();
-  $(".want_date").css("background-color",'papayawhip');
-  $(this).css("background-color","orange");
-  // $(this).parent().addClass("circle");
-  var s = $(this).text()
-  // s = s.split('<');
-  var outputDate = monthTextArray[month] + " " + s + ", " + year;
-  inputDate = year + "-" + month + "-" + s;
-  console.log(outputDate);
-  $("#outputText").text(outputDate);
-  $("#dateinput").val(inputDate);
-});
+// $("#cal").on("click", ".want_date", function (e) {
+//
+//   e.preventDefault();
+//   $(".want_date").css("background-color",'papayawhip');
+//   $(this).css("background-color","orange");
+//   // $(this).parent().addClass("circle");
+//   var s = $(this).text()
+//   // s = s.split('<');
+//   var outputDate = monthTextArray[month] + " " + s + ", " + year;
+//   inputDate = year + "-" + month + "-" + s;
+//   console.log(outputDate);
+//   $("#outputText").text(outputDate);
+//   $("#dateinput").val(inputDate);
+// });
 
 
 

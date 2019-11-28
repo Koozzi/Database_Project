@@ -84,11 +84,9 @@
                 </div>
 
                 <div class="cc cal_output paper-shadow-top-z-1">
-                    <form action="" method="POST">
-                        <input type="date" id="dateinput" readonly>
-                        <span id="outputText"></span>
-                        <div id="button"><button type="submit">CHOICE</button></div>
-                    </form>
+                    <div id ="asd" onclick="select_date('{{movie_message}}','{{pjh_message}}');">
+                        <button>다음시발</button>
+                    </div>
                 </div>
             </div><!-- 자기 내용 넣으세요 -->
         </section>
@@ -97,23 +95,20 @@
 
 
     <script>
-        $('#c1, #c2').owlCarousel({
-            loop: true,
-            margin: 15,
-            nav: true,
-            autoplay: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        })
+        var inputDate;
+        function select_date(movie_id, pjh_id){
+            $("#cal").on("click", ".want_date", function () {
+              $(".want_date").css("background-color",'papayawhip');
+              $(this).css("background-color","orange");
+              var s = $(this).text()
+              inputDate = year + "-" + month + "-" + s;
+            });
+
+            console.log(movie_id);
+            console.log(pjh_id);
+            console.log(inputDate);
+            window.location.href=`${window.location.origin}/booktime/?date=${inputDate}&pjh=${pjh_id}&movie=${movie_id}`
+        }
     </script>
 
 
