@@ -1,21 +1,218 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    {% for start_time in time.all %}-->
+<!--        <div onclick="select_time('{{start_time.start_time}}', '{{movie_message}}','{{pjh_message}}','{{date_message}}')";>{{start_time.start_time}}</div><br>-->
+<!--    {% endfor %}-->
+<!--    <script>-->
+<!--        function select_time(time, movie, pjh, date) {-->
+<!--            console.log(time);-->
+<!--            console.log(movie);-->
+<!--            console.log(pjh);-->
+<!--            console.log(date);-->
+<!--            window.location.href=`${window.location.origin}/bookseat/?time=${time}&date=${date}&pjh=${pjh}&movie=${movie}`-->
+<!--        }-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
 <html lang="en">
+
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Booking-time</title>
+    <link rel="stylesheet" href="{% static 'css/book_pjh.css' %}">
+    <link rel="stylesheet" href="{% static 'css/timetable_st.css' %}">
+    <script src="/static/js/jquery.min.js"></script>
 </head>
+
 <body>
-    {% for start_time in time.all %}
-        <div onclick="select_time('{{start_time.start_time}}', '{{movie_message}}','{{pjh_message}}','{{date_message}}')";>{{start_time.start_time}}</div><br>
-    {% endfor %}
+    <script src="/static/js/timetable.js"></script>
+    <header>
+        <nav>
+            <div class="logo">
+                <a class="nav-item-anchor active" href="./index.html"><img src="/static/image/logo.PNG" alt="logo"width="200px"></a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-item-anchor active" href="#">영화 정보 / 리뷰</a>
+            </div>
+
+
+            <div class="nav-item">
+                <a class="nav-item-anchor" href="#">영화 랭킹</a>
+            </div>
+
+            <div class="nav-item">
+                <a class="nav-item-anchor" href="#">상영관 위치</a>
+            </div>
+
+            <div class="nav-item">
+                <a class="nav-item-anchor" href="#">예매</a>
+            </div>
+            <div class="login">
+                Hi,{{user}} !!
+                <a href="{% url 'signout' %}">로그아웃</a><br>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="beforeinfo">
+            <div class="where">
+                {% for pjh in pjh_selected.all %}
+                <p>{{pjh.pjh_name}}</p>
+                {% endfor %}
+            </div>
+            <div class="day">
+                <p>{{date_message}}</p>
+            </div>
+        </div>
+        <div class="timetable">
+            <div class="timerow" id="t1">
+                <div class="thnum">
+                    1상영관
+                </div>
+                <div class="timebar">
+                    {% for time in timetables.all %}
+                    {% if time.theater_id == 1%}
+                    <div class="time">
+                        <div id ="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <button class="timeselect" value="{{time.start_time}}">
+                                {{time.start_time}}
+                            </button>
+                        </div>
+                    </div>
+                    {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="timerow" id="t2">
+                <div class="thnum">
+                    2상영관
+                </div>
+                <div class="timebar">
+                    {% for time in timetables.all %}
+                    {% if time.theater_id == 2%}
+                    <div class="time">
+                        <div id ="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <button class="timeselect" value="{{time.start_time}}">
+                                {{time.start_time}}
+                            </button>
+                        </div>
+                    </div>
+                    {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="timerow" id="t3">
+                <div class="thnum">
+                    3상영관
+                </div>
+                <div class="timebar">
+                    {% for time in timetables.all %}
+                    {% if time.theater_id == 3%}
+                    <div class="time">
+                        <div id ="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <button class="timeselect" value="{{time.start_time}}">
+                                {{time.start_time}}
+                            </button>
+                        </div>
+                    </div>
+                    {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="timerow" id="t4">
+                <div class="thnum">
+                    4상영관
+                </div>
+                <div class="timebar">
+                    {% for time in timetables.all %}
+                    {% if time.theater_id == 4%}
+                    <div class="time">
+                        <div id ="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <button class="timeselect" value="{{time.start_time}}">
+                                {{time.start_time}}
+                            </button>
+                        </div>
+                    </div>
+                    {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="timerow" id="t5">
+                <div class="thnum">
+                    5상영관
+                </div>
+                <div class="timebar">
+                    {% for time in timetables.all %}
+                    {% if time.theater_id == 5%}
+                    <div class="time">
+                        <div id ="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <button class="timeselect" value="{{time.start_time}}">
+                                {{time.start_time}}
+                            </button>
+                        </div>
+                    </div>
+                    {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="timerow" id="t6">
+                <div class="thnum">
+                    6상영관
+                </div>
+                <div class="timebar">
+                    {% for time in timetables.all %}
+                    {% if time.theater_id == 6%}
+                    <div class="time">
+                        <div id ="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <button class="timeselect" value="{{time.start_time}}">
+                                {{time.start_time}}
+                            </button>
+                        </div>
+                    </div>
+                    {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="timerow" id="t7">
+                <div class="thnum">
+                    7상영관
+                </div>
+                <div class="timebar">
+                    {% for time in timetables.all %}
+                    {% if time.theater_id == 7%}
+                    <div class="time">
+                        <div id ="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <button class="timeselect" value="{{time.start_time}}">
+                                {{time.start_time}}
+                            </button>
+                        </div>
+                    </div>
+                    {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
-        function select_time(time, movie, pjh, date) {
-            console.log(time);
-            console.log(movie);
-            console.log(pjh);
-            console.log(date);
-            window.location.href=`${window.location.origin}/bookseat/?time=${time}&date=${date}&pjh=${pjh}&movie=${movie}`
+        function select_time(movie_id, pjh_id, date, time){
+            console.log(movie_id)
+            console.log(pjh_id)
+            console.log(date)
+            console.log(time)
+            window.location.href=`${window.location.origin}/bookseat/?time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}`
         }
     </script>
 </body>
+
+
 </html>
