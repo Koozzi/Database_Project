@@ -8,12 +8,18 @@
 </head>
 <body>
     {% for movie in current_movie.all %}
-        <div class="movie_poster_item" onclick="button_click('{{ movie.movie_id }}');">
-            <img class="movie_poster_size" src="{{movie.movie_poster.url}}"><br><br>
-        </div>
+    <img class="movie_poster_size" src="{{movie.movie_poster.url}}"><br><br>
+    연령 | {{movie.movie_age}}<br>
+    장르 | {{movie.movie_genre}}<br>
+    감독 | {{movie.movie_director}}<br>
+    출연 | {{movie.movie_actor1}}, {{movie.movie_actor2}}<br>
+    평점 | {{score.0|floatformat:2}}<br>
+    <div class="movie_poster_item" onclick="book_movie('{{ movie.movie_id }}');">
+    예매하기<br>
+    </div>
     {% endfor %}
     <script>
-        function button_click(movie_id) {
+        function book_movie(movie_id) {
             console.log(movie_id);
             window.location.href = `${window.location.origin}/bookpjh/?movie=${movie_id}`
         }
