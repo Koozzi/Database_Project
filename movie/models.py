@@ -172,7 +172,7 @@ class booking(models.Model):
     refund = models.IntegerField(blank=True, null=True, default = 0) # 예매를 하면 0 상태로 저장이 됨. 누군가가 환불을 하면 1 로 바뀜
 
     def __str__(self):
-        return '%s  /  %s  /  %s  /  %s  /  %s  /  %s'%(self.username, self.movie, self.pjh, self.date, self.theater, self.time)
+        return '%s  /  %s  /  %s  /  %s  /  %s  /  %s / %s '%(self.username, self.movie, self.pjh, self.date, self.theater, self.time, self.seat)
 # class movieactor(models.Model):
 #     movie_name = models.ForeignKey(movieinfo, on_delete=models.CASCADE)
 #     movie_actor = models.CharField(max_length=45, blank=True, null=True)
