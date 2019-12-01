@@ -154,7 +154,7 @@ class timetable(models.Model):
     movie_name = models.ForeignKey(movieinfo, on_delete=models.CASCADE)
     date = models.DateField(blank=True, null=True)
     theater_id = models.IntegerField(blank=True, null=True)
-    start_time = models.TimeField(blank=True, null=True)
+    start_time = models.CharField(max_length=45, blank=True, null=True)
     pjh_id = models.ForeignKey(pjh, on_delete=models.CASCADE)
     def __str__(self):
         return '%s  /  %s  /  %s  /  %s상영  /  %s'%(self.movie_name, self.date, self.pjh_id, self.theater_id, self.start_time)
@@ -167,7 +167,7 @@ class booking(models.Model):
     pjh = models.ForeignKey(pjh, on_delete=models.CASCADE)
     date = models.DateField(blank=True, null=True)
     theater = models.IntegerField(blank=True, null=True)
-    time = models.TimeField(blank=True, null=True)
+    time = models.CharField(max_length=45, blank=True, null=True)
     refund = models.IntegerField(blank=True, null=True, default = 0) # 예매를 하면 0 상태로 저장이 됨. 누군가가 환불을 하면 1 로 바뀜
 
     def __str__(self):
