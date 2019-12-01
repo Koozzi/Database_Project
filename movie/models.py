@@ -189,3 +189,9 @@ class review(models.Model):
     review_time = models.TimeField(blank=True, null=True)
     def __str__(self):
         return '%s %s' % (self.username, self.movie_id)
+
+class seat(models.Model):
+    seat_num = models.CharField(max_length=45, blank=True, null=True)
+    seat_row = models.CharField(max_length=45, blank=True, null=True)
+    def __str__(self):
+        return '%s' %(self.seat_num)
