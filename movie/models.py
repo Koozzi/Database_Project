@@ -168,6 +168,7 @@ class booking(models.Model):
     date = models.DateField(blank=True, null=True)
     theater = models.IntegerField(blank=True, null=True)
     time = models.CharField(max_length=45, blank=True, null=True)
+    seat = models.CharField(max_length=45, blank=True, null=True)
     refund = models.IntegerField(blank=True, null=True, default = 0) # 예매를 하면 0 상태로 저장이 됨. 누군가가 환불을 하면 1 로 바뀜
 
     def __str__(self):
