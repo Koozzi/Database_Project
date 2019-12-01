@@ -7,6 +7,7 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
 from .forms import *
+from django.db.models import Avg
 
 def moviehome(request):
     # if request.user.is_authenticated:
@@ -252,13 +253,21 @@ def detail(request, pk):
             return redirect('detail', pk = pk)
     else:
         form = reviewForm()
-    movie = request.GET.get('id')
-    movie_message = "{}".format(movie)
+
     reviews = review.objects.select_related("movie_id").filter(movie_id=pk)
+    avg = review.objects.filter(movie_id=pk).aggregate(Avg('review_grade'))
+
+    score = []
+    score.append(avg['review_grade__avg'])
+
+    score_update = movieinfo.objects.get(movie_id=pk)
+    score_update.movie_score = score[0]
+    score_update.save()
     return render(request, 'movie/detail.html', {
         'moviedetail': moviedetail,
         'reviews': reviews,
         'id': id,
         'form':form,
         'user':request.user,
+        'score': score,
     })
