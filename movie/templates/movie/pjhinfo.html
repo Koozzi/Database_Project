@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for pjh in pjhs.all %}
+{{pjh.pjh_name}}<br>
+{{pjh.pjh_location}}<br>
+{{pjh.pjh_phone}}
+{% endfor %}
+</body>
+</html>

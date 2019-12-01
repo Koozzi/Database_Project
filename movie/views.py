@@ -278,3 +278,9 @@ def ranking(request):
     return render(request, 'movie/ranking.html', {
         'movies':movies,
     })
+
+def pjhinfo(request):
+    pjhs = pjh.objects.all()
+    return render(request, 'movie/pjhinfo.html', {
+        'pjhs': pjhs
+    })
