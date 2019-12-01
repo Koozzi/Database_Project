@@ -13,6 +13,9 @@
 감독 | {{movie.movie_director}}<br>
 출연 | {{movie.movie_actor1}}, {{movie.movie_actor2}}<br>
 평점 | {{movie.movie_score|floatformat:2}}
+{% if movie.movie_playing == 1 %}
+예매하기
+{% endif %}
 {% endfor %}
 </body>
 </html>
