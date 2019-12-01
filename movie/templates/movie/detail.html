@@ -17,7 +17,10 @@
     장르 | {{moviedetail.movie_genre}}<br>
     감독 | {{moviedetail.movie_director}}<br>
     출연 | {{moviedetail.movie_actor1}}, {{moviedetail.movie_actor2}}<br>
-    평점 | {{score.0|floatformat:2}}
+    평점 | {{score.0|floatformat:2}}<br>
+    <div class="movie_poster_item" onclick="book_movie('{{ moviedetail.movie_id }}');">
+    예매하기<br>
+    </div>
     <h2>줄거리</h2><br>
     {{moviedetail.movie_story}}
     <br>
@@ -36,5 +39,12 @@
         {{rev.review_grade}}    {{rev.username}}<br>
         {{rev.review_text}}<br><br>
     {% endfor %}
+
+    <script>
+        function book_movie(movie_id) {
+            console.log(movie_id);
+            window.location.href = `${window.location.origin}/bookpjh/?movie=${movie_id}`
+        }
+    </script>
 </body>
 </html>
