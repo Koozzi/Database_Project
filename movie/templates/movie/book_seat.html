@@ -1,10 +1,230 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/book_pjh.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Seat Reservation</title>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <a class="nav-item-anchor active" href="#"><img src="/static/image/logo.PNG" alt="logo"width="200px"></a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-item-anchor active" href="#">영화 정보 / 리뷰</a>
+                </div>
+
+
+                <div class="nav-item">
+                    <a class="nav-item-anchor" href="#">영화 랭킹</a>
+                </div>
+
+                <div class="nav-item">
+                    <a class="nav-item-anchor" href="#">상영관 위치</a>
+                </div>
+
+                <div class="nav-item">
+                    <a class="nav-item-anchor" href="./timetable.html">예매</a>
+                </div>
+                <div class="login">
+                    Hi,{{user}} !!
+                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                </div>
+            </nav>
+        </header>
+
+        <section>
+            <div class="plane">
+                <div id="screen">
+                    <p>{{rowB.10}}</p>
+
+                </div>
+                <form action="" method="post">
+                    <ol class="cabin">
+                        <li class="row row--1">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seat_rowA in rowA %}
+                                {% if not_booked_seat_rowA == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seat_rowA}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seat_rowA}}" />
+                                    <label for="{{not_booked_seat_rowA}}">{{not_booked_seat_rowA}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--2">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seat in rowB %}
+                                {% if not_booked_seat == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seat}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seat}}" />
+                                    <label for="{{not_booked_seat}}">{{not_booked_seat}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        <li class="row row--3">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seatC in rowC %}
+                                {% if not_booked_seatC == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatC}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatC}}" />
+                                    <label for="{{not_booked_seatC}}">{{not_booked_seatC}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--4">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seatD in rowD %}
+                                {% if not_booked_seatD == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatD}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatD}}" />
+                                    <label for="{{not_booked_seatD}}">{{not_booked_seatD}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--5">
+                            <ol class="seats" type="E">
+                                {% for not_booked_seatE in rowE %}
+                                {% if not_booked_seatE == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatE}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatE}}" />
+                                    <label for="{{not_booked_seatE}}">{{not_booked_seatE}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--6">
+                            <ol class="seats" type="F">
+                                {% for not_booked_seatF in rowF %}
+                                {% if not_booked_seatF == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatF}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatF}}" />
+                                    <label for="{{not_booked_seatF}}">{{not_booked_seatF}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--7">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seatG in rowG %}
+                                {% if not_booked_seatG == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatG}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatG}}" />
+                                    <label for="{{not_booked_seatG}}">{{not_booked_seatG}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--8">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seatH in rowH %}
+                                {% if not_booked_seatH == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatH}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatH}}" />
+                                    <label for="{{not_booked_seatH}}">{{not_booked_seatH}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--9">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seatI in rowI %}
+                                {% if not_booked_seatI == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatI}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatI}}" />
+                                    <label for="{{not_booked_seatI}}">{{not_booked_seatI}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                        <li class="row row--10">
+                            <ol class="seats" type="A">
+                                {% for not_booked_seatJ in rowJ %}
+                                {% if not_booked_seatJ == 'X'%}
+                                <li class="seat">
+                                    <label>{{not_booked_seatJ}}</label>
+                                </li>
+                                {% else %}
+                                <li class="seat">
+                                    <input type="checkbox" id="{{not_booked_seatJ}}" />
+                                    <label for="{{not_booked_seatJ}}">{{not_booked_seatJ}}</label>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </li>
+                    </ol>
+                    <br>
+                    <hr>
+                    <div class="sbutton">
+                        <button type="submit" ID="booking"> BOOKING </button>
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- partial -->
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
+</section>
+</div>
+</body>
+
+
 </html>

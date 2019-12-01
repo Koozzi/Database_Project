@@ -76,14 +76,137 @@ def bookseat(request):
     pjh_message = "{}".format(pjh)      #pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
     date_message = "{}".format(date)    #date_message 에는 고객이 선택한 날짜가 들어있다.
     time_message = "{}".format(time)    #time_message 에는 고객이 선택한 시간이 들어있다.
+    booked_seats = booking.objects.filter(movie=movie_message,
+                                          pjh=pjh_message,
+                                          date=date_message,
+                                          time=time_message,
+                                          refund=0)
+    rowA = []
+    not_booked_seats_rowA = seat.objects.filter(seat_row='A')
+    for i in range(len(not_booked_seats_rowA)):
+        rowA.append(not_booked_seats_rowA[i])
+
+    for i in range(len(not_booked_seats_rowA)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowA[i].seat_num == booked_seats[j].seat:
+                rowA[i] = "X"
+    rowB=[]
+    not_booked_seats_rowB = seat.objects.filter(seat_row='B')
+    for i in range(len(not_booked_seats_rowB)):
+        rowB.append(not_booked_seats_rowB[i])
+
+    for i in range(len(not_booked_seats_rowB)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowB[i].seat_num == booked_seats[j].seat:
+                rowB[i] = "X"
+
+    rowC=[]
+    not_booked_seats_rowC = seat.objects.filter(seat_row='C')
+    for i in range(len(not_booked_seats_rowC)):
+        rowC.append(not_booked_seats_rowC[i])
+
+    for i in range(len(not_booked_seats_rowC)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowC[i].seat_num == booked_seats[j].seat:
+                rowC[i] = "X"
+    rowD=[]
+    not_booked_seats_rowD = seat.objects.filter(seat_row='D')
+    for i in range(len(not_booked_seats_rowD)):
+        rowD.append(not_booked_seats_rowD[i])
+
+    for i in range(len(not_booked_seats_rowD)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowD[i].seat_num == booked_seats[j].seat:
+                rowD[i] = "X"
+
+    rowE=[]
+    not_booked_seats_rowE = seat.objects.filter(seat_row='E')
+    for i in range(len(not_booked_seats_rowE)):
+        rowE.append(not_booked_seats_rowE[i])
+
+    for i in range(len(not_booked_seats_rowE)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowE[i].seat_num == booked_seats[j].seat:
+                rowE[i] = "X"
+
+    rowF=[]
+    not_booked_seats_rowF = seat.objects.filter(seat_row='F')
+    for i in range(len(not_booked_seats_rowF)):
+        rowF.append(not_booked_seats_rowF[i])
+
+    for i in range(len(not_booked_seats_rowF)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowF[i].seat_num == booked_seats[j].seat:
+                rowF[i] = "X"
+
+    rowG=[]
+    not_booked_seats_rowG = seat.objects.filter(seat_row='G')
+    for i in range(len(not_booked_seats_rowG)):
+        rowG.append(not_booked_seats_rowG[i])
+
+    for i in range(len(not_booked_seats_rowG)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowG[i].seat_num == booked_seats[j].seat:
+                rowG[i] = "X"
+
+    rowH=[]
+    not_booked_seats_rowH = seat.objects.filter(seat_row='H')
+    for i in range(len(not_booked_seats_rowH)):
+        rowH.append(not_booked_seats_rowH[i])
+
+    for i in range(len(not_booked_seats_rowH)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowH[i].seat_num == booked_seats[j].seat:
+                rowH[i] = "X"
+
+    rowI=[]
+    not_booked_seats_rowI = seat.objects.filter(seat_row='I')
+    for i in range(len(not_booked_seats_rowI)):
+        rowI.append(not_booked_seats_rowI[i])
+
+    for i in range(len(not_booked_seats_rowI)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowI[i].seat_num == booked_seats[j].seat:
+                rowI[i] = "X"
+
+    rowJ=[]
+    not_booked_seats_rowJ = seat.objects.filter(seat_row='J')
+    for i in range(len(not_booked_seats_rowJ)):
+        rowJ.append(not_booked_seats_rowJ[i])
+
+    for i in range(len(not_booked_seats_rowJ)):
+        for j in range(len(booked_seats)):
+            if not_booked_seats_rowJ[i].seat_num == booked_seats[j].seat:
+                rowJ[i] = "X"
+
     context={
         'movie_message': movie_message,
         'pjh_message': pjh_message,
         'date_message': date_message,
         'time_message': time_message,
+        'booked_seats': booked_seats,
+        'not_booked_seats_rowA': not_booked_seats_rowA,
+        'not_booked_seats_rowB': not_booked_seats_rowB,
+        'not_booked_seats_rowC': not_booked_seats_rowC,
+        'not_booked_seats_rowD': not_booked_seats_rowD,
+        'not_booked_seats_rowE': not_booked_seats_rowE,
+        'not_booked_seats_rowF': not_booked_seats_rowF,
+        'not_booked_seats_rowG': not_booked_seats_rowG,
+        'not_booked_seats_rowH': not_booked_seats_rowH,
+        'not_booked_seats_rowI': not_booked_seats_rowI,
+        'not_booked_seats_rowJ': not_booked_seats_rowJ,
+        'rowA': rowA,
+        'rowB': rowB,
+        'rowC': rowC,
+        'rowD': rowD,
+        'rowE': rowE,
+        'rowF': rowF,
+        'rowG': rowG,
+        'rowH': rowH,
+        'rowI': rowI,
+        'rowJ': rowJ,
     }
     return render(request, 'movie/book_seat.html', context)
-
 def signup(request):
     if request.method == "POST":
         if request.POST["pw"]==request.POST["pwcof"]:
