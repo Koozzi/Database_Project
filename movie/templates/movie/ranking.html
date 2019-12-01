@@ -7,7 +7,7 @@
 <body>
 <h1>영화 순위</h1>
 {% for movie in movies.all%}
-<h2>{{movie.movie_name}}</h2><br>
+<h2>{{movie.movie_name}}</h2>
 {% if movie.movie_playing == 1 %}
 현재 상영중!<br>
 {% endif %}
