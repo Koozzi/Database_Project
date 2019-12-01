@@ -17,8 +17,16 @@
 출연 | {{movie.movie_actor1}}, {{movie.movie_actor2}}<br>
 평점 | {{movie.movie_score|floatformat:2}}<br>
 {% if movie.movie_playing == 1 %}
-예매하기
+    <div class="movie_poster_item" onclick="book_movie('{{ movie.movie_id }}');">
+    예매하기<br>
+    </div>
 {% endif %}
 {% endfor %}
+    <script>
+        function book_movie(movie_id) {
+            console.log(movie_id);
+            window.location.href = `${window.location.origin}/bookpjh/?movie=${movie_id}`
+        }
+    </script>
 </body>
 </html>
