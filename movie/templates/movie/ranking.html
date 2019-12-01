@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>영화 순위</h1>
+{% for movie in movies.all%}
+<h2>{{movie.movie_name}}</h2>
+<img src="{{movie.movie_poster.url}}" width=100px height=150px><br>
+장르 | {{movie.movie_genre}}<br>
+감독 | {{movie.movie_director}}<br>
+출연 | {{movie.movie_actor1}}, {{movie.movie_actor2}}<br>
+평점 | {{movie.movie_score|floatformat:2}}
+{% endfor %}
+</body>
+</html>

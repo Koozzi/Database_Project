@@ -32,4 +32,5 @@ urlpatterns = [
     path('bookdate/', movie.views.bookdate, name='bookdate'),
     path('booktime/', movie.views.booktime, name='booktime'),
     path('bookseat/', movie.views.bookseat, name='bookseat'),
+    path('ranking/', movie.views.ranking, name='ranking'),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

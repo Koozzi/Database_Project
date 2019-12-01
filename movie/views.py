@@ -271,3 +271,10 @@ def detail(request, pk):
         'user':request.user,
         'score': score,
     })
+
+
+def ranking(request):
+    movies = movieinfo.objects.all().order_by('-movie_score')
+    return render(request, 'movie/ranking.html', {
+        'movies':movies,
+    })
