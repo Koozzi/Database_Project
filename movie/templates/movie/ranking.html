@@ -7,11 +7,15 @@
 <body>
 <h1>영화 순위</h1>
 {% for movie in movies.all%}
+<a href="{% url 'detail' movie.movie_id%}">
 <h2>{{movie.movie_name}}</h2>
+    </a>
 {% if movie.movie_playing == 1 %}
 현재 상영중!<br>
 {% endif %}
-<img src="{{movie.movie_poster.url}}" width=100px height=150px><br>
+<a href="{% url 'detail' movie.movie_id%}">
+    <img src="{{movie.movie_poster.url}}" width=100px height=150px><br>
+</a>
 장르 | {{movie.movie_genre}}<br>
 감독 | {{movie.movie_director}}<br>
 출연 | {{movie.movie_actor1}}, {{movie.movie_actor2}}<br>
