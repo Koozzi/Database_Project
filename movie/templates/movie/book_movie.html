@@ -70,14 +70,16 @@
                                 <li>
                                     <a href="{% url 'signout' %}">로그아웃</a><br>
                                 </li>
+                                {% else %}
                                 <li>
-                                    {% else %}
+
                                     <a href="{% url 'signin' %}">로그인</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'signin' %}">회원가입</a>
-                                    {% endif %}
+
                                 </li>
+                                {% endif %}
 
                             </ul>
                         </nav>
