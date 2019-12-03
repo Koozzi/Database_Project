@@ -1,0 +1,194 @@
+html {
+    display: inline-block;
+}
+
+body {
+    font-family: 'Jua', sans-serif;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 10%;
+}
+
+td {
+    height: 90px;
+    width: 93px;
+    font-weight: bold;
+    text-align: center;
+}
+
+tr {
+    width: 400px;
+    text-align: center;
+}
+
+body .calander {
+    height: 700px;
+    width: 700px;
+    margin: 20px auto;
+}
+
+body .cal_head {
+    font-size: 20px;
+    background-color: #6c6c6c;
+    color: #FFFFFF;
+    font-weight: 400;
+    height: 80px;
+    text-align: center;
+}
+
+.cal_head span,
+.button_right,
+.button_left {
+    background-color: #ffffff;
+    border: none;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    display: inline-block;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.button_right {
+    float: right;
+}
+
+body .cal_head .button_left {
+    float: left;
+}
+
+body .cal_body {
+    padding: 5px 5px 5px 5px;
+    height: 600px;
+    text-align: center;
+    background-color: white;
+    /* min-width: 100%; */
+}
+
+body .cal_body .button {
+    background-color: white;
+    /* Green */
+    border: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
+}
+
+body .cal_output {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding-top: 5px;
+    height: 40px;
+    text-align: center;
+    color: #000000;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.circle {
+    border-radius: 50%;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: 1px solid #666;
+    text-align: center;
+}
+
+.paper-shadow-top-z-1 {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16)
+}
+
+.paper-shadow-bottom-z-1 {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26)
+}
+
+.paper-shadow-top-z-2 {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, .19)
+}
+
+.paper-shadow-bottom-z-2 {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2)
+}
+
+.paper-shadow-top-z-3 {
+    box-shadow: 0 17px 50px 0 rgba(0, 0, 0, .19)
+}
+
+.paper-shadow-bottom-z-3 {
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24)
+}
+
+.paper-shadow-top-z-4 {
+    box-shadow: 0 25px 55px 0 rgba(0, 0, 0, .21)
+}
+
+.paper-shadow-bottom-z-4 {
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, .22)
+}
+
+.paper-shadow-top-z-5 {
+    box-shadow: 0 40px 77px 0 rgba(0, 0, 0, .22)
+}
+
+.paper-shadow-bottom-z-5 {
+    box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2)
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;
+    /* Konqueror */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                not supported by any browser */
+}
+
+#dateinput {
+    visibility: hidden;
+    width: 0;
+}
+
+#outputText {
+    margin-top: 1.2%;
+    min-width: 180px;
+}
+
+.cc form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.want_date {
+    border-radius: 40px;
+    background-color: #9c9c9c;
+    color: white;
+}
+
+.want_date:hover {
+    /* opacity: 0.4; */
+    /* border-radius: 50px; */
+    border: none;
+    background-color: #6c6c6c;
+}
+
+
+/* .want_date:visited {
+background-color: black;
+} */
+
+.want_date:active {
+    background-color: white;
+}
