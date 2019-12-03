@@ -78,7 +78,7 @@
         <div class=book_movie>
 
             <img class="movie_poster_size" src="{{movie.movie_poster.url}}">
-            <p>평점 <span class="grade">{{movie.movie_score||floatformat:2}}</span></p>
+            <p>평점 <span class="grade">{{movie.movie_score|floatformat:2}}</span></p>
             <hr>
             <p>연령 <span class="age">{{movie.movie_age}}</span></p>
             <p>장르 <span class="genre">{{movie.movie_genre}}</span></p>
