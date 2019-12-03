@@ -1,0 +1,139 @@
+body {
+    color: black;
+}
+
+section {
+    margin-top: 40px;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding-top: 2em;
+    padding-bottom: 5em;
+    overflow: hidden;
+}
+
+.row {
+    margin: 0 10%;
+    background: white;
+    /* border-bottom: 1px solid #ff7f00; */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 40px;
+}
+
+.header h1 {
+    float: left;
+    position: relative;
+}
+
+.header h1 em {
+    padding: 5px 5px;
+    display: inline-block;
+}
+
+.header h1 em img {
+    width: auto;
+    height: 40px;
+}
+
+.header h1 strong {
+    display: block;
+    position: absolute;
+    left: 170px;
+    top: 14px;
+}
+
+.header h1 strong img {
+    width: auto;
+    height: 40px;
+}
+
+.header .nav {
+    float: right;
+}
+
+.header .nav ul {
+    border-left: 1px solid #c6c6c6;
+}
+
+.header .nav li {
+    float: left;
+    width: 100nter;
+    border-right: 1px solid #c6c6c6;
+}
+
+.header .nav li:hover {
+    background: coral;
+    transition: 0.3s;
+}
+
+.container {
+    border-bottom: 1px solid #c6c6c6;
+    background: white;
+}
+
+.header .nav li a {
+    display: block;
+    padding: 14px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+}
+
+
+/* footer */
+
+footer {
+    border-top: 1px solid #c6c6c6;
+}
+
+.footer_infor {
+    padding: 10px 0;
+    width: 80%;
+}
+
+.footer_infor h2 img {
+    width: 150px;
+}
+
+.footer_infor ul {
+    padding: 15px 0;
+}
+
+.footer_infor li {
+    position: relative;
+    display: inline;
+    padding-right: 16px;
+    white-space: nowrap;
+}
+
+.footer_infor li:after {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 1px;
+    height: 8px;
+    background: #8f8f8f;
+}
+
+.footer_infor li:last-child:after {
+    width: 0;
+    height: 0;
+}
+
+.footer_infor li a {
+    color: #8f8f8f;
+}
+
+.footer_infor address p {
+    color: #8f8f8f;
+    padding-bottom: 15px;
+}
