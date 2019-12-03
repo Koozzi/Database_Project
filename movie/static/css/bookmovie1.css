@@ -1,0 +1,78 @@
+section {
+    margin-left: 8%;
+    margin-right: 8%;
+    overflow: hidden;
+}
+
+/* .movie_row{
+    clear: both;
+} */
+
+.book_movie{
+    width: 18.8%;
+    float: left;
+    border: 1px solid gray;
+    overflow: hidden;
+    margin-bottom: 5%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    background-color: rgb(247, 243, 243);
+    height: 75%;
+}
+
+.book_movie:hover{
+    background-color: black;
+    color: white;
+}
+
+
+.movie_poster_size{
+    width: 100%;
+}
+
+
+.grade{
+    color: rgb(211, 180, 8);
+    font-weight: bold;
+}
+
+section div p{
+    margin-top:2% ;
+    margin-left: 5%;
+}
+
+span{
+    font-weight: bold;
+}
+
+.cursor{
+    width: 90%;
+    height: 60px;
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-right: 25%;
+    margin-bottom: 3%;
+    font-weight: bold;
+    font-size: 20px;
+    /* border: gray solid 0.5px; */
+    box-shadow: 3px 2px 2px rgba(194, 192, 192, 0.671);
+}
+
+
+
+.cursor:hover{
+    background-color: rgb(252, 234, 207);
+    color: white;
+
+}
+
+.actor_info{
+    height: 7.5%;
+    /* word-break:break-all; */
+
+}
+
+.actor{
+    word-break:break-all;
+
+}
