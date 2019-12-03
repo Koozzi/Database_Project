@@ -54,7 +54,7 @@
                     <div class="header clearfix">
                         <h1>
                             <a href="/newindex.html">
-                                <em><img src="/static/image/logo.PNG"></em>
+                                <em><img src="./image/logo.PNG"></em>
                             </a>
                         </h1>
                         <nav class="nav">
@@ -62,8 +62,23 @@
                                 <li><a href="#">영화 정보</a></li>
                                 <li><a href="#">영화 랭킹</a></li>
                                 <li><a href="#">상영관 위치</a></li>
-                                <li><a href="{% url 'bookmovie' %}">예매</a></li>
-                                <li><a href="#">로그인</a></li>
+                                <li><a href="#">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a>{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                <li>
+                                    {% else %}
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signin' %}">회원가입</a>
+                                    {% endif %}
+                                </li>
+
                             </ul>
                         </nav>
                     </div>
