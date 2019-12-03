@@ -23,6 +23,7 @@ section {
 .book_movie:hover{
     background-color: black;
     color: white;
+    transition: 0.3s;
 }
 
 
