@@ -1,52 +1,152 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PJHBOX</title>
+    <link rel="stylesheet" href="{% static 'css/newst1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/detail1.css' %}">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    {% if user.is_active %}
+    <header>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="header clearfix">
+                        <h1>
+                            <a href="/newindex.html">
+                                <em><img src="/static/image/logo.png" alt="logo"></em>
+                            </a>
+                        </h1>
+                        <nav class="nav">
+                            <ul class="clearfix">
+                                <li><a href="#">영화 정보</a></li>
+                                <li><a href="{% url 'ranking' %}">영화 랭킹</a></li>
+                                <li><a href="{% url 'pjhinfo' %}">상영관 위치</a></li>
+                                <li><a href="{% url 'bookmovie' %}">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a>{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                <li>
+                                    {% else %}
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signin' %}">회원가입</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        {% if user.is_active %}
         Hi,{{user}} !!
         <a href="{% url 'signout' %}">로그아웃</a><br>
-    {% else %}
+        {% else %}
         <a href="{% url 'signin' %}">로그인</a>
-    {% endif %}
-    <h1>{{moviedetail.movie_name}} </h1>
-    <img src="{{moviedetail.movie_poster.url}}" width=100px height=150px><br>
-    연령 | {{moviedetail.movie_age}}<br>
-    장르 | {{moviedetail.movie_genre}}<br>
-    감독 | {{moviedetail.movie_director}}<br>
-    출연 | {{moviedetail.movie_actor1}}, {{moviedetail.movie_actor2}}<br>
-    평점 | {{score.0|floatformat:2}}<br>
-    <div class="cursor" onclick="book_movie('{{ moviedetail.movie_id }}');">
-    예매하기<br>
-    </div>
-    <h2>줄거리</h2><br>
-    {{moviedetail.movie_story}}
-    <br>
-    <br>
-    <h2>리뷰</h2>
-    {% if request.user.is_active %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">댓글 작성</button>
-    </form>
-    {% else %}
-    <div class="alert alert-warning">로그인된 사용자만 댓글을 작성할 수 있습니다.</div><br>
-    {% endif %}
-    {% for rev in reviews.all %}
-        {{rev.review_grade}}    {{rev.username}}<br>
-        {{rev.review_text}}<br><br>
-    {% endfor %}
+        {% endif %}
+        <div class="detail">
+            <div class="image"> <img src="{{moviedetail.movie_poster.url}}" width=100px height=150px><br>
+            </div>
+            <div class="info">
+                <h1>{{moviedetail.movie_name}} </h1>
+                <br>
+                <p class="p">연령 | {{moviedetail.movie_age}}<br></p>
+                <p class="p">장르 | {{moviedetail.movie_genre}}</p>
+                <p class="p">감독 | {{moviedetail.movie_director}}</p>
+                <p class="p">출연 | {{moviedetail.movie_actor1}}, {{moviedetail.movie_actor2}}</p>
+                <p class="p">평점 | {{score.0|floatformat:2}}</p>
 
+                <button class="cursor" onclick="book_movie('{{ moviedetail.movie_id }}');">
+                    예매하기
+                </button>
+                <div class="story">
+                    <h2>줄거리</h2><br>
+                    {{moviedetail.movie_story}}
+                </div>
+
+                <br>
+                <br>
+                <h2>리뷰</h2>
+                {% if request.user.is_active %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary cursor2">댓글 작성</button>
+
+
+                </form>
+                {% else %}
+                <div class="alert alert-warning">로그인된 사용자만 댓글을 작성할 수 있습니다.</div><br>
+                {% endif %}
+                {% for rev in reviews.all %}
+                {{rev.review_grade}} {{rev.username}}<br>
+                {{rev.review_text}}<br><br>
+                {% endfor %}
+            </div>
+
+        </div>
+
+
+
+
+
+    </section>
+
+
+    <footer id="footer">
+
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <h2><img src="/static/image/logo.png" alt="logo"></h2>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴/광고/부대사업 문의</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">윤리경영</a></li>
+                        </ul>
+                        <address>
+                            <p>4공학관 스매쉬룸<br><span class="bar2">대표자명: 구치훈</span> 제작자: 장주섭 김동규 강은지 석예림 <br><span
+                                    class="bar2">사업자등록번호 123-45-59478</span> 통신판매업신고번호 제 833호</p>
+                            <p>Copyright 2014 by MegaboxJoongAng Inc. All right reserved</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script>
         function book_movie(movie_id) {
             console.log(movie_id);
             window.location.href = `${window.location.origin}/bookpjh/?movie=${movie_id}`
         }
     </script>
+
+
+    <script src="/static/js/jquery.min.js"></script>
+
 </body>
+
 </html>
