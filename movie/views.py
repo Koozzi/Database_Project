@@ -22,7 +22,7 @@ def moviehome(request):
     #     return render(request, 'movie/not_logged_in.html')
 
 def bookmovie(request):
-    current_movie = movieinfo.objects.filter(movie_playing=1)
+    current_movie = movieinfo.objects.filter(movie_playing=1).order_by('-movie_score')
     return render(request, 'movie/book_movie.html', {
         'current_movie':current_movie,
     })
