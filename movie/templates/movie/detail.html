@@ -56,12 +56,6 @@
 
 
     <section>
-        {% if user.is_active %}
-        Hi,{{user}} !!
-        <a href="{% url 'signout' %}">로그아웃</a><br>
-        {% else %}
-        <a href="{% url 'signin' %}">로그인</a>
-        {% endif %}
         <div class="detail">
             <div class="image"> <img src="{{moviedetail.movie_poster.url}}" width=100px height=150px><br>
             </div>
