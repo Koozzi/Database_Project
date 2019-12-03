@@ -1,83 +1,229 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <link rel="stylesheet" href="{% static 'css/moviehome1.css' %}">-->
+<!--    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">-->
+<!--    <link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}">-->
+<!--    <script src="/static/js/jquery.min.js"></script>-->
+<!--    <script src="/static/js/owl.carousel.js"></script>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>JHBox</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div id="container">-->
+<!--        <header>-->
+<!--            <div class="logo">-->
+<!--                <img src="/static/image/logo.PNG" alt="logo">-->
+<!--                <div class="login">-->
+<!--                    {% if user.is_active %}-->
+<!--                    Hi, {{user}} !!-->
+<!--                    <a href="{% url 'signout' %}">로그아웃</a><br>-->
+<!--                    {% else %}-->
+<!--                    <a href="{% url 'signin' %}">로그인</a>-->
+<!--                    <a href="{% url 'signin' %}">회원가입</a>-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <nav>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor active" href="#">인사말</a>-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor" href="{% url 'ranking' %}">영화순위</a>-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor" href="{% url 'pjhinfo' %}">PJHs</a>-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor" href="{% url 'bookmovie' %}">예매</a>-->
+<!--                </div>-->
+<!--            </nav>-->
+<!--        </header>-->
+<!--        <section>-->
+<!--            <div class="nowcom">-->
+<!--                <h1>Current Playing</h1>-->
+<!--            </div>-->
+<!--            <div id="c1" class="owl-carousel owl-theme">-->
+<!--                {% for movieinfos in movie.all %}-->
+<!--                <div class="item">-->
+<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"&ndash;&gt;-->
+<!--&lt;!&ndash;                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>&ndash;&gt;-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--            <div class="nowcom">-->
+<!--                <h1>Coming Soon</h1>-->
+<!--            </div>-->
+<!--                <div id="c1" class="owl-carousel owl-theme">-->
+<!--                {% for movieinfos in movie1.all %}-->
+<!--                <div class="item">-->
+<!--                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                    <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"&ndash;&gt;-->
+<!--&lt;!&ndash;                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>&ndash;&gt;-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--        </section>-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        function button_click(movie_id, movie_name) {-->
+<!--	        console.log(movie_name);-->
+<!--	        console.log(movie_id);-->
+<!--	        window.location.href = `${window.location.origin}/detail/${movie_id}?name=${movie_name}&id=${movie_id}`-->
+<!--        }-->
+<!--        $('#c1, #c2').owlCarousel({-->
+<!--            loop: true,-->
+<!--            margin: 15,-->
+<!--            nav: true,-->
+<!--            autoplay: true,-->
+<!--            responsive: {-->
+<!--                0: {-->
+<!--                    items: 1-->
+<!--                },-->
+<!--                600: {-->
+<!--                    items: 3-->
+<!--                },-->
+<!--                1000: {-->
+<!--                    items: 5-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
 <html lang="en">
+
 <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/moviehome1.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JHBOX</title>
+    <link rel="stylesheet" href="{% static 'css/newst_main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mainpage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset_main.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/owl.carousel.js"></script>
-    <meta charset="UTF-8">
-    <title>JHBox</title>
 </head>
+
 <body>
-    <div id="container">
-        <header>
-            <div class="logo">
-                <img src="/static/image/logo.PNG" alt="logo">
-                <div class="login">
-                    {% if user.is_active %}
-                    Hi, {{user}} !!
-                    <a href="{% url 'signout' %}">로그아웃</a><br>
-                    {% else %}
-                    <a href="{% url 'signin' %}">로그인</a>
-                    <a href="{% url 'signin' %}">회원가입</a>
-                    {% endif %}
+    <header>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="header clearfix">
+                        <h1>
+                            <a href="/newindex.html">
+                                <em><img src="/static/image/logo.png" alt="logo"></em>
+                            </a>
+                        </h1>
+                        <nav class="nav">
+                            <ul class="clearfix">
+                                <li><a href="#">영화 정보</a></li>
+                                <li><a href="#">영화 랭킹</a></li>
+                                <li><a href="#">상영관 위치</a></li>
+                                <li><a href="#">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a>{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                <li>
+                                    {% else %}
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signin' %}">회원가입</a>
+                                    {% endif %}
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
-            <nav>
-                <div class="nav-item">
-                    <a class="nav-item-anchor active" href="#">인사말</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-item-anchor" href="{% url 'ranking' %}">영화순위</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-item-anchor" href="{% url 'pjhinfo' %}">PJHs</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-item-anchor" href="{% url 'bookmovie' %}">예매</a>
-                </div>
-            </nav>
-        </header>
-        <section>
-            <div class="nowcom">
-                <h1>Current Playing</h1>
+        </div>
+    </header>
+
+
+    <section>
+        <div class="nowcom">
+            <h2>Current Playing</h2>
+        </div>
+        <div id="c1" class="owl-carousel owl-theme">
+            {% for movieinfos in movie.all %}
+            <div class="item">
+                <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}"></a>
             </div>
-            <div id="c1" class="owl-carousel owl-theme">
-                {% for movieinfos in movie.all %}
-                <div class="item">
-                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>
+            <!--                <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"-->
+            <!--                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>-->
+            {% endfor %}
+        </div>
+
+
+
+        <div class="nowcom" id="se">
+            <h2>Coming Soon</h2>
+        </div>
+
+        <div id="c2" class="owl-carousel owl-theme">
+            {% for movieinfos in movie1.all %}
+            <div class="item">
+                <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}"></a>
+            </div>
+            <!--                    <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"-->
+            <!--                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>-->
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <footer id="footer">
+        <div id="footer_sns">
+            <div class="container">
+
+            </div>
+        </div>
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <h2><img src="./image/logo.PNG"></h2>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴/광고/부대사업 문의</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">윤리경영</a></li>
+                        </ul>
+                        <address>
+                                <p>4공학관 스매쉬룸<br><span class="bar2">대표자명: 구치훈</span> 제작자: 장주섭 김동규 강은지 석예림 <br><span class="bar2">사업자등록번호 123-45-59478</span> 통신판매업신고번호 제 833호</p>
+                                <p>Copyright 2014 by MegaboxJoongAng Inc. All right reserved</p>
+                        </address>
+                    </div>
                 </div>
-<!--                <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"-->
-<!--                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>-->
-                {% endfor %}
             </div>
-            <div class="nowcom">
-                <h1>Coming Soon</h1>
-            </div>
-                <div id="c1" class="owl-carousel owl-theme">
-                {% for movieinfos in movie1.all %}
-                <div class="item">
-                    <a href="{% url 'detail' movieinfos.movie_id%}"><img src="{{movieinfos.movie_poster.url}}" ></a>
-                </div>
-<!--                    <div class="item2" onclick="button_click('{{ movieinfos.movie_id }}', '{{ movieinfos.movie_name }}');"-->
-<!--                         id="{{ movieinfos.movie_id }}"><img src="{{movieinfos.movie_poster.url}}" ></div>-->
-                {% endfor %}
-            </div>
-        </section>
-    </div>
+        </div>
+    </footer>
+
+
     <script>
-        function button_click(movie_id, movie_name) {
-	        console.log(movie_name);
-	        console.log(movie_id);
-	        window.location.href = `${window.location.origin}/detail/${movie_id}?name=${movie_name}&id=${movie_id}`
-        }
         $('#c1, #c2').owlCarousel({
             loop: true,
             margin: 15,
-            nav: true,
+            nav: false,
             autoplay: true,
+            dots: true,
             responsive: {
                 0: {
                     items: 1
@@ -91,5 +237,7 @@
             }
         })
     </script>
+
 </body>
+
 </html>

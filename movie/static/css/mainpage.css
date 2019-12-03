@@ -1,0 +1,16 @@
+.nowcom {
+    text-align: center;
+    font-weight: 800;
+    font-size: large;
+    color: black;
+    padding-bottom: 25px;
+}
+
+#c1 {
+    border-bottom: 1px solid #6c6c6c;
+    padding-bottom: 25px;
+}
+
+.se h2 {
+    padding: 25px 0;
+}
