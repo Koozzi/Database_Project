@@ -1,0 +1,83 @@
+h3 {
+    font-size: 40px;
+    padding-top: 40px;
+}
+
+h4 {
+    font-size: 30px;
+    color: gray;
+    font-weight: 500;
+}
+
+.content {
+    margin-top: 80px;
+    margin-left: 120px;
+}
+
+.box p {
+    padding: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    background-color: black;
+    background-color: rgba( 255, 255, 255, 0.5);
+}
+
+.theater {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.content .theater1 {
+    padding: 40px;
+    background-image: url(../image/info/d.jpg);
+    margin-top: 20px;
+    height: 330px;
+    width: 900px;
+}
+
+.content .theater2 {
+    padding: 40px;
+    background-image: url(../image/info/b.jpg);
+    margin-top: 20px;
+    height: 330px;
+    width: 900px;
+}
+
+.content .theater3 {
+    padding: 40px;
+    background-image: url(../image/info/c.jpg);
+    margin-top: 20px;
+    height: 330px;
+    width: 900px;
+}
+
+.content .theater4 {
+    padding: 40px;
+    background-image: url(../image/info/a.jpg);
+    margin-top: 20px;
+    height: 330px;
+    width: 900px;
+}
+
+.content .theater5 {
+    padding: 40px;
+    background-image: url(../image/info/e.jpg);
+    margin-top: 20px;
+    height: 330px;
+    width: 900px;
+}
+
+.content .theater6 {
+    padding: 40px;
+    background-image: url(../image/info/f.jpg);
+    margin-top: 20px;
+    height: 330px;
+    width: 900px;
+}
+
+.box {
+    background-color: rgba( 2, 2, 2, 0);
+    margin-top: 200px;
+    border: 1px;
+}

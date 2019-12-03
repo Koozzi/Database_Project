@@ -1,14 +1,120 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PJHBOX</title>
+    <link rel="stylesheet" href="{% static 'css/newst1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pjhinfo.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 </head>
+
 <body>
-{% for pjh in pjhs.all %}
-{{pjh.pjh_name}}<br>
-{{pjh.pjh_location}}<br>
-{{pjh.pjh_phone}}<br>
-{% endfor %}
+    <header>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="header clearfix">
+                        <h1>
+                            <a href="/newindex.html">
+                                <em><<img src="/static/image/logo.png" alt="logo"></em>
+                            </a>
+                        </h1>
+                        <nav class="nav">
+                            <ul class="clearfix">
+                                <li><a href="#">영화 정보</a></li>
+                                <li><a href="{% url 'ranking' %}">영화 랭킹</a></li>
+                                <li><a href="{% url 'pjhinfo' %}">상영관 위치</a></li>
+                                <li><a href="{% url 'bookmovie' %}">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a>{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                {% else %}
+                                <li>
+
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signin' %}">회원가입</a>
+
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        <h3>상영관 위치</h3>
+        <div class="content">
+            <div class="theater">
+                <h4>PJH안산</h4>
+                <div class="theater1">
+                    <div class="box"><p>안산점 주소<br>031-001-0001</p></div></div></div><hr>
+            <div class="theater">
+                <h4>PJH초지</h4>
+                <div class="theater2">
+                    <div class="box"><p>초지점 주소<br>031-002-0002</p></div></div></div><hr>
+            <div class="theater">
+                <h4>PJH고잔</h4>
+                <div class="theater3">
+                    <div class="box"><p>고잔점 주소<br>031-003-0003</p></div></div></div><hr>
+            <div class="theater">
+                <h4>PJH중앙</h4>
+                <div class="theater4">
+                    <div class="box"><p>중앙점 주소<br>031-004-0004</p></div></div></div><hr>
+            <div class="theater">
+                <h4>PJH한대앞</h4>
+                <div class="theater5">
+                    <div class="box"><p>한대앞점 주소<br>031-005-0005</p></div></div></div><hr>
+            <div class="theater">
+                <h4>PJH상록수</h4>
+                <div class="theater6">
+                    <div class="box"><p>상록수점 주소<br>031-006-0006</p></div></div></div>
+        </div>
+    </section>
+
+
+    <footer id="footer">
+
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <h2><img src="/static/image/logo.png" alt="logo"></h2>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴/광고/부대사업 문의</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">윤리경영</a></li>
+                        </ul>
+                        <address>
+                                <p>4공학관 스매쉬룸<br><span class="bar2">대표자명: 구치훈</span> 제작자: 장주섭 김동규 강은지 석예림 <br><span class="bar2">사업자등록번호 123-45-59478</span> 통신판매업신고번호 제 833호</p>
+                                <p>Copyright 2014 by MegaboxJoongAng Inc. All right reserved</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="/static/js/jquery.min.js"></script>
+
 </body>
+
 </html>
