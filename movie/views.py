@@ -284,3 +284,6 @@ def pjhinfo(request):
     return render(request, 'movie/pjhinfo.html', {
         'pjhs': pjhs
     })
+
+def hello(request):
+    return render(request, 'movie/hello.html')
