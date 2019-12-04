@@ -97,6 +97,8 @@
                 {{rev.review_grade}} {{rev.username}}<br>
                 {{rev.review_text}}<br><br>
                 {% endfor %}
+                {% else %}
+                {{moviedetail.movie_open}} 개봉 예정
                 {% endif %}
             </div>
 
