@@ -212,8 +212,8 @@
                     </ol>
                     <br>
                     <hr>
-                    <div class="sbutton">
-                        <button type="submit" ID="booking"> BOOKING </button>
+                    <div class="sbutton" >
+                        <button type="submit"  onclick="select_seat('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{theater_message}}','{{time_message}}');" ID="booking"> BOOKING </button>
                     </div>
 
                 </form>
@@ -221,6 +221,33 @@
             </div>
             <!-- partial -->
             <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script>
+                                var seat_input;
+
+                function box_checked(seat_id){
+                    seat_input = seat_id;
+                }
+
+
+                //
+                //                 function selectOnlyThis(id){
+                //   var myCheckbox = document.getElementsByName("myCheckbox");
+                //   Array.prototype.forEach.call(myCheckbox,function(el){
+                //     el.checked = false;
+                //   });
+                //   id.checked = true;
+                // }
+
+                function select_seat(movie_id, pjh_id, date, theater, time){
+                    console.log(movie_id);
+                    console.log(pjh_id);
+                    console.log(date);
+                    console.log(time);
+                    console.log(theater);
+                    console.log(seat_input);
+                    window.location.href=`${window.location.origin}/bookpay/?seat=${seat_input}&time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}&theater=${theater}`
+                }
+            </script>
 </body>
 </section>
 </div>

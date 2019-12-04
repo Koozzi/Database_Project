@@ -73,10 +73,12 @@ def bookseat(request):
     pjh = request.GET.get('pjh')
     date = request.GET.get('date')
     time = request.GET.get('time')
-    movie_message = "{}".format(movie)  #movie_message 에는 고객이 선택한 영화 고유 id가 들어있다.
-    pjh_message = "{}".format(pjh)      #pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
-    date_message = "{}".format(date)    #date_message 에는 고객이 선택한 날짜가 들어있다.
-    time_message = "{}".format(time)    #time_message 에는 고객이 선택한 시간이 들어있다.
+    theater = request.GET.get('theater')
+    movie_message = "{}".format(movie)  # movie_message 에는 고객이 선택한 영화 고유 id가 들어있다.
+    pjh_message = "{}".format(pjh)  # pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
+    date_message = "{}".format(date)  # date_message 에는 고객이 선택한 날짜가 들어있다.
+    time_message = "{}".format(time)  # time_message 에는 고객이 선택한 시간이 들어있다.
+    theater_message = "{}".format(theater)    #time_message 에는 고객이 선택한 시간이 들어있다.
     booked_seats = booking.objects.filter(movie=movie_message,
                                           pjh=pjh_message,
                                           date=date_message,
@@ -186,6 +188,7 @@ def bookseat(request):
         'date_message': date_message,
         'time_message': time_message,
         'booked_seats': booked_seats,
+        'theater_message': theater_message,
         'not_booked_seats_rowA': not_booked_seats_rowA,
         'not_booked_seats_rowB': not_booked_seats_rowB,
         'not_booked_seats_rowC': not_booked_seats_rowC,
@@ -287,3 +290,87 @@ def pjhinfo(request):
 
 def hello(request):
     return render(request, 'movie/hello.html')
+
+def completed(request):
+    movie = request.GET.get('movie')
+    pjh1 = request.GET.get('pjh')
+    date = request.GET.get('date')
+    time = request.GET.get('time')
+    theater = request.GET.get('theater')
+    seat = request.GET.get('seat')
+
+    movie_message = "{}".format(movie)  # movie_message 에는 고객이 선택한 영화 고유 id가 들어있다.
+    pjh_message = "{}".format(pjh1)  # pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
+    date_message = "{}".format(date)  # date_message 에는 고객이 선택한 날짜가 들어있다.
+    time_message = "{}".format(time)  # time_message 에는 고객이 선택한 시간이 들어있다.
+    theater_message = "{}".format(theater)
+    seat_message = "{}".format(seat)  # seat_message 에는 고객이 선택한 좌석이 들어있다.
+
+    final_movie = movieinfo.objects.get(movie_id=movie_message)
+    final_pjh = pjh.objects.get(pjh_id=pjh_message)
+
+    bk = booking(username=request.user,
+                 movie=final_movie,
+                 pjh=final_pjh,
+                 date=date_message,
+                 theater=theater_message,
+                 time=time_message,
+                 seat=seat_message)
+    bk.save()
+
+    current_user = realUser.objects.get(username=request.user)
+    current_user.user_bcount += 1
+    current_user.save()
+
+    if current_user.user_bcount >= 5:
+        current_user.grade = 'PLATINUM'
+        current_user.save()
+
+    if current_user.user_bcount >= 10:
+        current_user.grade = 'VIP'
+        current_user.save()
+
+    if current_user.user_bcount >= 20:
+        current_user.grade = 'VVIP'
+        current_user.save()
+
+    if current_user.user_bcount >= 50:
+        current_user.grade = 'LEGEND'
+        current_user.save()
+
+    return render(request, 'movie/completed.html',{
+        'movie_message': movie_message,
+        'pjh_message': pjh_message,
+        'date_message': date_message,
+        'time_message': time_message,
+        'theater_message': theater_message,
+        'seat_message': seat_message,
+
+    })
+
+def bookpay(request):
+    movie = request.GET.get('movie')
+    pjh1 = request.GET.get('pjh')
+    date = request.GET.get('date')
+    time = request.GET.get('time')
+    theater = request.GET.get('theater')
+    seat = request.GET.get('seat')
+    movie_message = "{}".format(movie)  #movie_message 에는 고객이 선택한 영화 고유 id가 들어있다.
+    pjh_message = "{}".format(pjh1)      #pjh_message 에는 고객이 선택한 지점 고유 id가 들어있다.
+    date_message = "{}".format(date)    #date_message 에는 고객이 선택한 날짜가 들어있다.
+    time_message = "{}".format(time)    #time_message 에는 고객이 선택한 시간이 들어있다.
+    theater_message = "{}".format(theater)
+    seat_message = "{}".format(seat)    #seat_message 에는 고객이 선택한 좌석이 들어있다.
+    final_movie = movieinfo.objects.filter(movie_id=movie_message)
+    final_pjh = pjh.objects.filter(pjh_id=pjh_message)
+
+    return render(request, 'movie/bookpay.html', {
+        'movie_message': movie_message,
+        'pjh_message': pjh_message,
+        'date_message': date_message,
+        'time_message': time_message,
+        'theater_message': theater_message,
+        'seat_message': seat_message,
+        'final_movie': final_movie,
+        'final_pjh': final_pjh,
+    })

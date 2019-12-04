@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for movie in final_movie.all %}
+<img class="movie_poster_size" src="{{movie.movie_poster.url}}" width=100px height=150px><br>
+영화 | {{movie.movie_name}}<br>
+{% endfor %}
+{% for pjh in final_pjh.all %}
+지점 | {{pjh.pjh_name}}<br>
+{% endfor %}
+날짜 | {{date_message}}<br>
+상영 | {{theater_message}} 상영<br>
+시간 | {{time_message}}<br>
+좌석 | {{seat_message}}<br>
+<div onclick="complete('{{movie_message}}','{{pjh_message}}','{{date_message}}', '{{theater_message}}','{{time_message}}','{{seat_message}}');">예매하기</div>
+        <script>
+            function complete(movie_id, pjh_id, date, theater, time, seat) {
+                console.log(movie_id);
+                console.log(pjh_id);
+                console.log(date);
+                console.log(time);
+                console.log(theater);
+                console.log(seat);
+                window.location.href = `${window.location.origin}/completed/?&seat=${seat}&theater=${theater}&time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}`
+            }
+        </script>
+</body>
+</html>

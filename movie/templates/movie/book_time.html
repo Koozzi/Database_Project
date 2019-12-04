@@ -294,7 +294,7 @@
                     <div class="timebar">
                         {% for time in timetables.all %} {% if time.theater_id == 1%}
                         <div class="time">
-                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}',1,'{{time.start_time}}');">
                                 <button class="timeselect" value="{{time.start_time}}">
                                             {{time.start_time}}
                                         </button>
@@ -310,7 +310,7 @@
                     <div class="timebar">
                         {% for time in timetables.all %} {% if time.theater_id == 2%}
                         <div class="time">
-                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}',2,'{{time.start_time}}');">
                                 <button class="timeselect" value="{{time.start_time}}">
                                             {{time.start_time}}
                                         </button>
@@ -326,7 +326,7 @@
                     <div class="timebar">
                         {% for time in timetables.all %} {% if time.theater_id == 3%}
                         <div class="time">
-                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}',3,'{{time.start_time}}');">
                                 <button class="timeselect" value="{{time.start_time}}">
                                             {{time.start_time}}
                                         </button>
@@ -342,7 +342,7 @@
                     <div class="timebar">
                         {% for time in timetables.all %} {% if time.theater_id == 4%}
                         <div class="time">
-                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}',4,'{{time.start_time}}');">
                                 <button class="timeselect" value="{{time.start_time}}">
                                             {{time.start_time}}
                                         </button>
@@ -358,7 +358,7 @@
                     <div class="timebar">
                         {% for time in timetables.all %} {% if time.theater_id == 5%}
                         <div class="time">
-                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}',5,'{{time.start_time}}');">
                                 <button class="timeselect" value="{{time.start_time}}">
                                             {{time.start_time}}
                                         </button>
@@ -374,7 +374,7 @@
                     <div class="timebar">
                         {% for time in timetables.all %} {% if time.theater_id == 6%}
                         <div class="time">
-                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}',6,'{{time.start_time}}');">
                                 <button class="timeselect" value="{{time.start_time}}">
                                             {{time.start_time}}
                                         </button>
@@ -390,7 +390,7 @@
                     <div class="timebar">
                         {% for time in timetables.all %} {% if time.theater_id == 7%}
                         <div class="time">
-                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}','{{time.start_time}}');">
+                            <div id="asd" onclick="select_time('{{movie_message}}','{{pjh_message}}','{{date_message}}',7,'{{time.start_time}}');">
                                 <button class="timeselect" value="{{time.start_time}}">
                                             {{time.start_time}}
                                         </button>
@@ -402,12 +402,13 @@
             </div>
         </div>
         <script>
-            function select_time(movie_id, pjh_id, date, time) {
+            function select_time(movie_id, pjh_id, date, theater, time) {
                 console.log(movie_id)
                 console.log(pjh_id)
                 console.log(date)
                 console.log(time)
-                window.location.href = `${window.location.origin}/bookseat/?time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}`
+                console.log(theater)
+                window.location.href = `${window.location.origin}/bookseat/?theater=${theater}&time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}`
             }
         </script>
     </section>
