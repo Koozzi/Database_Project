@@ -1,3 +1,122 @@
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <link rel="stylesheet" href="{% static 'css/book_pjh.css' %}">-->
+<!--    <title>JHBox</title>-->
+<!--    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->
+<!--    <style>-->
+<!--        button {-->
+<!--            background-color: papayawhip;-->
+<!--            border: none;-->
+<!--            color: black;-->
+<!--            padding: 15px 15px;-->
+<!--            text-align: center;-->
+<!--            text-decoration: none;-->
+<!--            display: inline-block;-->
+<!--            font-size: 14px;-->
+<!--            margin: 2px;-->
+<!--            border-radius: 20px;-->
+<!--            cursor: pointer;-->
+<!--            font-weight: 500;-->
+<!--        }-->
+<!--        button:focus {-->
+<!--            background: orange;-->
+<!--        }-->
+<!--        button:hover {-->
+<!--            transition: 0.5s;-->
+<!--            background-color: orange;-->
+<!--        }-->
+<!--        .back, .next{-->
+<!--            background: orange;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div id="container">-->
+<!--        <header>-->
+<!--            <nav>-->
+<!--                <div class="logo">-->
+<!--                    <a class="nav-item-anchor active" href="#"><img src="/static/image/logo.PNG" alt="logo" width="200px"></a>-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor active" href="#">영화 정보 / 리뷰</a>-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor" href="{% url 'ranking' %}">영화 랭킹</a>-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor" href="#">상영관 위치</a>-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    <a class="nav-item-anchor" href="./timetable.html">예매</a>-->
+<!--                </div>-->
+<!--                <div class="login">-->
+<!--                    {% if user.is_active %}-->
+<!--                    Hi,{{user}} !!-->
+<!--                    <a href="{% url 'signout' %}">로그아웃</a><br>-->
+<!--                    {% else %}-->
+<!--                    <a href="{% url 'signin' %}">로그인</a>-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--            </nav>-->
+<!--        </header>-->
+<!--    <br>-->
+<!--        <section>-->
+<!--            <div style="position:relative;text-align: center;">-->
+<!--                <iframe src="https://www.google.com/maps/d/embed?mid=1oAZ8pGNKI_tHNsYsCp3Ux5IfLtRdM0A0" width="600" height="450"></iframe>-->
+<!--                <div style="position:absolute;top:0px;left:19%;background:#424242;width:620px;height:40px;padding-bottom: 30px;"><h2 style="color: white;">영화관</h2></div>-->
+<!--            </div>-->
+<!--            <br><br>-->
+<!--            <div style="text-align: center;">-->
+<!--                {% for pjh in pjhs %}-->
+<!--                    <button class="theater" value="{{pjh.pjh_name}}"><div onclick="select_pjh( '{{ pjh.pjh_id }}', '{{movie_message}}');">{{pjh.pjh_name}}</div><br></button>-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--        </section>-->
+<!--    </div>-->
+
+<!--    <script type="text/javascript">-->
+<!--        $(document).ready(function () {-->
+<!--            $("button[name=ok]").click(function () {-->
+<!--                $("form[name=groupMemberInfo]")-->
+<!--                .attr({ action: "groupMemberManage.php?value="+$(this).val(), method: "post" })-->
+<!--                .submit();-->
+<!--            });-->
+<!--        });-->
+<!--</script>-->
+<!--    <script>-->
+<!--        function select_pjh(pjh_id, movie_id) {-->
+<!--            console.log(pjh_id);-->
+<!--            console.log(movie_id);-->
+<!--            window.location.href=`${window.location.origin}/bookdate/?pjh=${pjh_id}&movie=${movie_id}`-->
+<!--        }-->
+<!--        $('#c1, #c2').owlCarousel({-->
+<!--            loop: true,-->
+<!--            margin: 15,-->
+<!--            nav: true,-->
+<!--            autoplay: true,-->
+<!--            responsive: {-->
+<!--                0: {-->
+<!--                    items: 1-->
+<!--                },-->
+<!--                600: {-->
+<!--                    items: 3-->
+<!--                },-->
+<!--                1000: {-->
+<!--                    items: 5-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--    </script>-->
+<!--</body>-->
+
+
+<!--</html>-->
+
 <html lang="en">
 
 <head>
@@ -5,12 +124,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/book_pjh.css' %}">
-    <title>JHBox</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <title>PJHBOX</title>
+    <link rel="stylesheet" href="{% static 'css/newst1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
     <style>
         button {
-            background-color: papayawhip;
+            background-color: #9c9c9c;
             border: none;
             color: black;
             padding: 15px 15px;
@@ -23,96 +143,133 @@
             cursor: pointer;
             font-weight: 500;
         }
+
         button:focus {
-            background: orange;
+            background: #6c6c6c;
         }
+
         button:hover {
             transition: 0.5s;
-            background-color: orange;
+            background-color: #6c6c6c;
         }
-        .back, .next{
-            background: orange;
+
+        .back,
+        .next {
+            background: #6c6c6c;
         }
     </style>
 </head>
-<body>
-    <div id="container">
-        <header>
-            <nav>
-                <div class="logo">
-                    <a class="nav-item-anchor active" href="{% url 'moviehome' %}"><img src="/static/image/logo.PNG" alt="logo"width="200px"></a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-item-anchor active" href="#">인사말</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-item-anchor" href="{% url 'ranking' %}">영화순위</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-item-anchor" href="{% url 'pjhinfo' %}">PJHs</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-item-anchor" href="{% url 'bookmovie' %}">예매</a>
-                </div>
-                <div class="login">
-                    {% if user.is_active %}
-                    Hi, {{user}} !!
-                    <a href="{% url 'signout' %}">SignOut</a><br>
-                    {% else %}
-                    <a href="{% url 'signin' %}">SignIn</a>
-                    {% endif %}
-                </div>
-            </nav>
-        </header>
-    <br>
-        <section>
-            <div style="position:relative;text-align: center;">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1oAZ8pGNKI_tHNsYsCp3Ux5IfLtRdM0A0" width="600" height="450"></iframe>
-                <div style="position:absolute;top:0px;left:19%;background:#424242;width:620px;height:40px;padding-bottom: 30px;"><h2 style="color: white;">영화관</h2></div>
-            </div>
-            <br><br>
-            <div style="text-align: center;">
-                {% for pjh in pjhs %}
-                    <button class="theater" value="{{pjh.pjh_name}}"><div onclick="select_pjh( '{{ pjh.pjh_id }}', '{{movie_message}}');">{{pjh.pjh_name}}</div><br></button>
-                {% endfor %}
-            </div>
-        </section>
-    </div>
 
+<body>
+    <header>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="header clearfix">
+                        <h1>
+                            <a href="/newindex.html">
+                                <em><img src="/static/image/logo.png" alt="logo"></em>
+                            </a>
+                        </h1>
+                        <nav class="nav">
+                            <ul class="clearfix">
+                                <li><a href="#">영화 정보</a></li>
+                                <li><a href="{% url 'ranking' %}">영화 랭킹</a></li>
+                                <li><a href="{% url 'pjhinfo' %}">상영관 위치</a></li>
+                                <li><a href="{% url 'bookmovie' %}">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a>{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                {% else %}
+                                <li>
+
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signin' %}">회원가입</a>
+
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        <div style="position:relative;text-align: center;">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1oAZ8pGNKI_tHNsYsCp3Ux5IfLtRdM0A0" width="600" height="450"></iframe>
+            <div style="position:absolute;top:0px;left:21.7%;background:#424242;width:600px;height:40px;padding-bottom: 30px;">
+                <h2 style="color: white;">영화관</h2>
+            </div>
+        </div>
+        <br><br>
+        <div style="text-align: center;">
+            {% for pjh in pjhs %}
+            <button class="theater" onclick="select_pjh( '{{ pjh.pjh_id }}', '{{movie_message}}');" value="{{pjh.pjh_name}}">{{pjh.pjh_name}}<br></button>
+            {% endfor %}
+
+        </div>
+    </section>
+
+
+    <footer id="footer">
+
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <h2><img src="/static/image/logo.png" alt="logo"></h2>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴/광고/부대사업 문의</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">윤리경영</a></li>
+                        </ul>
+                        <address>
+                                <p>4공학관 스매쉬룸<br><span class="bar2">대표자명: 구치훈</span> 제작자: 장주섭 김동규 강은지 석예림 <br><span class="bar2">사업자등록번호 123-45-59478</span> 통신판매업신고번호 제 833호</p>
+                                <p>Copyright 2014 by MegaboxJoongAng Inc. All right reserved</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src='./js/jquery.min.js'></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("button[name=ok]").click(function () {
+        $(document).ready(function() {
+            $("button[name=ok]").click(function() {
                 $("form[name=groupMemberInfo]")
-                .attr({ action: "groupMemberManage.php?value="+$(this).val(), method: "post" })
-                .submit();
+                    .attr({
+                        action: "groupMemberManage.php?value=" + $(this).val(),
+                        method: "post"
+                    })
+                    .submit();
             });
         });
-</script>
+    </script>
     <script>
-        function select_pjh(pjh_id, movie_id) {
+                function select_pjh(pjh_id, movie_id) {
+
             console.log(pjh_id);
+
             console.log(movie_id);
-            window.location.href=`${window.location.origin}/bookdate/?pjh=${pjh_id}&movie=${movie_id}`
+
+            window.location.href = `${window.location.origin}/bookdate/?pjh=${pjh_id}&movie=${movie_id}`
         }
-        $('#c1, #c2').owlCarousel({
-            loop: true,
-            margin: 15,
-            nav: true,
-            autoplay: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        })
     </script>
 </body>
-
 
 </html>
