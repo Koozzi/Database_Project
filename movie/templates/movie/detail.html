@@ -67,7 +67,7 @@
                 <p class="p">연령 | {{moviedetail.movie_age}}<br></p>
                 <p class="p">장르 | {{moviedetail.movie_genre}}</p>
                 <p class="p">감독 | {{moviedetail.movie_director}}</p>
-                <p class="p">출연 | {{moviedetail.movie_actor1}}, {{moviedetail.movie_actor2}}</p>
+                <p class="p">출연 | {{moviedetail.movie_actor1}} {{moviedetail.movie_actor2}}</p>
                 <p class="p">평점 | {{score.0|floatformat:2}}</p>
                 {% if moviedetail.movie_playing == 1 %}
                 <button class="cursor" onclick="book_movie('{{ moviedetail.movie_id }}');">
