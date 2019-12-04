@@ -167,7 +167,7 @@
                 <div class="row">
                     <div class="header clearfix">
                         <h1>
-                            <a href= "{% url 'moviehome' %}">
+                            <a href="{% url 'moviehome' %}">
                                 <em><img src="/static/image/logo.png" alt="logo"></em>
                             </a>
                         </h1>
@@ -186,12 +186,10 @@
                                 </li>
                                 {% else %}
                                 <li>
-
                                     <a href="{% url 'signin' %}">로그인</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'signin' %}">회원가입</a>
-
                                 </li>
                                 {% endif %}
                             </ul>
@@ -215,7 +213,6 @@
             {% for pjh in pjhs %}
             <button class="theater" onclick="select_pjh( '{{ pjh.pjh_id }}', '{{movie_message}}');" value="{{pjh.pjh_name}}">{{pjh.pjh_name}}<br></button>
             {% endfor %}
-
         </div>
     </section>
 
