@@ -81,6 +81,7 @@
                 <br>
                 <br>
                 <h2>리뷰</h2>
+                {% if moviedetail.movie_playing == 1 or moviedetail.movie_playing == 0 %}
                 {% if request.user.is_active %}
                 <form method="post">
                     {% csrf_token %}
@@ -96,6 +97,7 @@
                 {{rev.review_grade}} {{rev.username}}<br>
                 {{rev.review_text}}<br><br>
                 {% endfor %}
+                {% endif %}
             </div>
 
         </div>
