@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -184,7 +185,10 @@ class review(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.ForeignKey(realUser, on_delete=models.CASCADE)
     movie_id = models.ForeignKey(movieinfo, on_delete=models.CASCADE)
-    review_grade = models.IntegerField(blank=True, null=True)
+    review_grade = models.IntegerField(blank=True, null=True, validators=[
+        MaxValueValidator(10),
+        MinValueValidator(1)
+    ])
     review_text = models.TextField(blank=True, null=True)
     review_time = models.TimeField(blank=True, null=True)
     def __str__(self):
