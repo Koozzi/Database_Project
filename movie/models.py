@@ -149,6 +149,14 @@ class pjh(models.Model):
     def __str__(self):
         return '%s'%(self.pjh_name)
 
+class sale(models.Model):
+    id = models.AutoField(primary_key=True)
+    pjh = models.ForeignKey(pjh, on_delete=models.CASCADE)
+    love_money = models.IntegerField(blank=True, null=True, default=0)
+
+    def __str__(self):
+        return '%s' %(self.pjh)
+
 
 class timetable(models.Model):
     id  = models.AutoField(primary_key=True)

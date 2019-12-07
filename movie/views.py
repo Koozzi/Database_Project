@@ -339,6 +339,20 @@ def completed(request):
         current_user.user_bcount += 1
         current_user.save()
 
+        sales = sale.objects.get(id=pjh_message)
+        if current_user.grade == 'GOLD':
+            sales.love_money += 15000
+            sales.save()
+        elif current_user.grade == 'PLATINUM':
+            sales.love_money += 12000
+            sales.save()
+        elif current_user.grade == 'VIP':
+            sales.love_money += 10000
+            sales.save()
+        else:
+            sales.love_money += 8000
+            sales.save()
+
         if current_user.user_bcount >= 5:
             current_user.grade = 'PLATINUM'
             current_user.save()
