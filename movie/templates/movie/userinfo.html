@@ -13,6 +13,7 @@
 {% for i in user_booking %}
 {{i.movie}} {{i.pjh}} {{i.date}} {{i.theater}}상영관 {{i.time}} {{i.sea}}<br>
 {% endfor %}
+<br>
 리뷰<br>
 {% for rev in reviews.all %}
 {{rev.review_grade}} {{rev.username}}<br>
