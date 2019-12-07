@@ -33,7 +33,7 @@
                                 <li><a href="{% url 'bookmovie' %}">예매</a></li>
                                 {% if user.is_active %}
                                 <li>
-                                    <a>{{user}}</a>
+                                    <a href="{% url 'userinfo' %}">{{user}}</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'signout' %}">로그아웃</a><br>
