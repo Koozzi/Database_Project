@@ -273,7 +273,7 @@ def detail(request, pk):
     else:
         form = reviewForm()
 
-    reviews = review.objects.select_related("movie_id").filter(movie_id=pk)
+    reviews = review.objects.select_related("movie_id").filter(movie_id=pk)[:10]
     avg = review.objects.filter(movie_id=pk).aggregate(Avg('review_grade'))
 
     score = []
@@ -414,8 +414,8 @@ def bookpay(request):
 def userinfo(request):
     if request.user.is_authenticated:
         current_user = request.user
-        user_booking = booking.objects.select_related("username").filter(username=request.user).order_by('-date')
-        reviews = review.objects.select_related("username").filter(username=request.user).order_by('-review_time')
+        user_booking = booking.objects.select_related("username").filter(username=request.user).order_by('-date')[:5]
+        reviews = review.objects.select_related("username").filter(username=request.user).order_by('-review_time')[:10]
 
         return render(request, 'movie/userinfo.html',{
             'current_user': current_user,
