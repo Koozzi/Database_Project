@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{current_user.grade}} {{current_user.username}}<br>
+{{current_user.last_name}} {{current_user.first_name}}<br>
+가입날짜 : {{current_user.date_joined}}<br>
+예매횟수 : {{current_user.user_bcount}}<br>
+예매내역<br>
+{% for i in user_booking %}
+{{i.movie}} {{i.pjh}} {{i.date}} {{i.theater}}상영관 {{i.time}} {{i.sea}}<br>
+{% endfor %}
+리뷰<br>
+{% for rev in reviews.all %}
+{{rev.review_grade}} {{rev.username}}<br>
+{{rev.review_text}}<br>
+{{rev.review_time}}<br><br>
+{% endfor %}
+
+
+</body>
+</html>

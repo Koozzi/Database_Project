@@ -396,3 +396,15 @@ def bookpay(request):
         })
     else:
         return render(request, 'movie/login.html')
+
+def userinfo(request):
+    current_user = request.user
+    user_booking = booking.objects.select_related("username").filter(username=request.user).order_by('-date')
+    reviews = review.objects.select_related("username").filter(username=request.user).order_by('-review_time')
+
+    return render(request, 'movie/userinfo.html',{
+        'current_user': current_user,
+        'user_booking': user_booking,
+        'reviews': reviews,
+    })
+

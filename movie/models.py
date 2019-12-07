@@ -139,7 +139,7 @@ class movieinfo(models.Model):
     movie_score = models.FloatField(blank=True, null=True, default=0)
     movie_poster = models.ImageField(upload_to="poster")
     def __str__(self):
-        return '%s - %s(%s)' % (self.movie_id, self.movie_name, self.movie_playing)
+        return self.movie_name
 
 class pjh(models.Model):
     pjh_id = models.AutoField(primary_key=True)
@@ -190,7 +190,7 @@ class review(models.Model):
         MinValueValidator(1)
     ])
     review_text = models.TextField(blank=True, null=True)
-    review_time = models.TimeField(blank=True, null=True)
+    review_time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     def __str__(self):
         return '%s %s' % (self.username, self.movie_id)
 
