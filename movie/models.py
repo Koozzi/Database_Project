@@ -200,7 +200,7 @@ class review(models.Model):
     review_text = models.TextField(blank=True, null=True)
     review_time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     def __str__(self):
-        return '%s  |   %s  |   %s' % (self.username, self.movie_id, self.review_text)
+        return '%s/%s/%s/%s' % (self.username, self.movie_id, self.review_grade, self.review_text)
 
 class seat(models.Model):
     seat_num = models.CharField(max_length=45, blank=True, null=True)
