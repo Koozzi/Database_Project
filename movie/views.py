@@ -430,3 +430,8 @@ def userinfo(request):
     else:
         return render(request, 'movie/login.html')
 
+def zz(request, pk):
+    rev = review.objects.get(id=pk)
+    rev.delete()
+    return render(request, 'movie/deletereview.html')
+
