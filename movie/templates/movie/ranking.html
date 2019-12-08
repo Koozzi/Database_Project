@@ -106,11 +106,27 @@
                         </h1>
                         <nav class="nav">
                             <ul class="clearfix">
-                                <li><a href="#">영화 정보</a></li>
-                                <li><a href="#">영화 랭킹</a></li>
-                                <li><a href="#">상영관 위치</a></li>
-                                <li><a href="#">예매</a></li>
-                                <li><a href="#">로그인</a></li>
+                                <li><a href="{% url 'hello' %}">인사말</a></li>
+                                <li><a href="{% url 'ranking' %}">영화 랭킹</a></li>
+                                <li><a href="{% url 'pjhinfo' %}">상영관 위치</a></li>
+                                <li><a href="{% url 'bookmovie' %}">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a href="{% url 'userinfo' %}">{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                {% else %}
+                                <li>
+
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signup' %}">회원가입</a>
+
+                                </li>
+                                {% endif %}
                             </ul>
                         </nav>
                     </div>
