@@ -326,6 +326,9 @@ def completed(request):
         final_movie = movieinfo.objects.get(movie_id=movie_message)
         final_pjh = pjh.objects.get(pjh_id=pjh_message)
 
+        real_final_movie = movieinfo.objects.filter(movie_id=movie_message)
+        real_final_pjh = pjh.objects.filter(pjh_id=pjh_message)
+
         bk = booking(username=request.user,
                      movie=final_movie,
                      pjh=final_pjh,
@@ -376,6 +379,8 @@ def completed(request):
             'time_message': time_message,
             'theater_message': theater_message,
             'seat_message': seat_message,
+            'real_final_movie': real_final_movie,
+            'real_final_pjh': real_final_pjh,
 
         })
     else:
