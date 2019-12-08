@@ -1,26 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{{current_user.grade}} {{current_user.username}}<br>
-{{current_user.last_name}} {{current_user.first_name}}<br>
-가입날짜 : {{current_user.date_joined}}<br>
-<br>
-예매내역 (예매횟수 : {{current_user.user_bcount}})<br>
-{% for i in user_booking %}
-{{i.movie}} {{i.pjh}} {{i.date}} {{i.theater}}상영관 {{i.time}} {{i.sea}}<br>
-{% endfor %}
-<br>
-리뷰<br>
-{% for rev in reviews.all %}
-{{rev.review_grade}} {{rev.username}}<br>
-{{rev.review_text}}<br>
-{{rev.review_time}}<br><br>
-{% endfor %}
 
+
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PJHBOX</title>
+    <link rel="stylesheet" href="{% static 'css/newst1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/userinfo.css' %}">
+
+    <script src="/static/js/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="header clearfix">
+                        <h1>
+                            <a href="{% url 'moviehome' %}">
+                                <em><img src="/static/image/logo.png" alt="logo"></em>
+                            </a>
+                        </h1>
+                        <nav class="nav">
+                            <ul class="clearfix">
+                                <li><a href="{% url 'hello' %}">인사말</a></li>
+                                <li><a href="{% url 'ranking' %}">영화 랭킹</a></li>
+                                <li><a href="{% url 'pjhinfo' %}">상영관 위치</a></li>
+                                <li><a href="{% url 'bookmovie' %}">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a href="{% url 'userinfo' %}">{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                {% else %}
+                                <li>
+
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signup' %}">회원가입</a>
+
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div id="left">
+            <div>
+                <h2>YOUR INFORMATION</h2>
+            </div>
+            <hr>
+            <div id="image">
+                <img src="/static/image/account.png" alt="user_image">
+                <p><span id="user_name">{{current_user.username}}</span></p>
+            </div>
+            <hr>
+            <div id="info">
+
+                <p><span>등급 :</span> <span id="grade">{{current_user.grade}}</span> </p>
+                <p><span>이름 :</span> {{current_user.last_name}} {{current_user.first_name}} </p>
+
+                <p><span>가입날짜 :</span> {{current_user.date_joined}} </p>
+                <br>
+
+                <p><span>예매내역 (예매횟수 : {{current_user.user_bcount}})</span></p>
+                {% for i in user_booking %}
+                <p>{{i.movie}} {{i.pjh}} {{i.date}} {{i.theater}}상영관 {{i.time}} {{i.seat}}<br></p>
+                {% endfor %}
+                <br>
+            </div>
+        </div>
+        <div id="right">
+            <h2>YOUR REVIEWS</h2>
+            <hr>
+
+            <div id="reviews">
+                {% for rev in reviews.all %}
+                <div class="review">
+                    <br> {{rev.review_grade}} {{rev.username}}
+                    <br> {{rev.review_text}}
+                    <br> {{rev.review_time}}
+                    <br> <a id="delete" href="{% url 'zz' rev.id %}" method="POST" >삭제하기</a>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="footer">
+
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <h2><img src="/static/image/logo.png" alt="logo"></h2>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴/광고/부대사업 문의</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">윤리경영</a></li>
+                        </ul>
+                        <address>
+                            <p>4공학관 스매쉬룸<br><span class="bar2">대표자명: 구치훈</span> 제작자: 장주섭 김동규 강은지 석예림 <br><span
+                                    class="bar2">사업자등록번호 123-45-59478</span> 통신판매업신고번호 제 833호</p>
+                            <p>Copyright 2014 by MegaboxJoongAng Inc. All right reserved</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src='./js/jquery.min.js'></script>
 
 </body>
+
 </html>

@@ -38,4 +38,5 @@ urlpatterns = [
     path('bookpay/', movie.views.bookpay, name='bookpay'),
     path('completed/', movie.views.completed, name='completed'),
     path('userinfo/', movie.views.userinfo, name='userinfo'),
+    path('userinfo/<int:pk>', movie.views.zz, name='zz'),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
