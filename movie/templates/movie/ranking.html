@@ -26,10 +26,18 @@
             margin-right: 0.5%;
             overflow: hidden;
             margin-top: 0;
+            margin-bottom: 18px;
         }
         .line{
             border-bottom: 1px solid #4444;
             position: relative;
+        }
+
+        #movie_poster {
+            margin: 0;
+            padding: 0;
+            max-height: 286px;
+            max-width: 193px;
         }
 
         .movie_ranking{
@@ -142,10 +150,10 @@
               <span style="background: #ffffff;">영화 랭킹</span>
             </div>
         {% for movie in movies.all %}
-            <div class="movie" style="float: left;">
+            <div class="movie" style="float: left; width: 199px; height: 361px;">
 
                     <div id="ranking" style="position:relative; z-index: 2; left: 10px; top: 40px;">
-                        1
+                        {{rank}}
                     </div>
                     <div id="movie_poster" style="position: relative; z-index: 1;">
                         <a href="{% url 'detail' movie.movie_id%}">
