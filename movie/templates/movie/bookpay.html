@@ -1,32 +1,165 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PJHBOX</title>
+    <link rel="stylesheet" href="{% static 'css/newst1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/paycheck.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 </head>
+
 <body>
-{% for movie in final_movie.all %}
-<img class="movie_poster_size" src="{{movie.movie_poster.url}}" width=100px height=150px><br>
-영화 | {{movie.movie_name}}<br>
-{% endfor %}
-{% for pjh in final_pjh.all %}
-지점 | {{pjh.pjh_name}}<br>
-{% endfor %}
-날짜 | {{date_message}}<br>
-상영 | {{theater_message}} 상영<br>
-시간 | {{time_message}}<br>
-좌석 | {{seat_message}}<br>
-<div onclick="complete('{{movie_message}}','{{pjh_message}}','{{date_message}}', '{{theater_message}}','{{time_message}}','{{seat_message}}');">예매하기</div>
-        <script>
-            function complete(movie_id, pjh_id, date, theater, time, seat) {
-                console.log(movie_id);
-                console.log(pjh_id);
-                console.log(date);
-                console.log(time);
-                console.log(theater);
-                console.log(seat);
-                window.location.href = `${window.location.origin}/completed/?&seat=${seat}&theater=${theater}&time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}`
-            }
-        </script>
+    <header>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="header clearfix">
+                        <h1>
+                            <a href="{% url 'moviehome' %}">
+                                <em><img src="/static/image/logo.png" alt="logo"></em>
+                            </a>9
+                        </h1>
+                        <nav class="nav">
+                            <ul class="clearfix">
+                                <li><a href="{% url 'hello' %}">인사말</a></li>
+                                <li><a href="{% url 'ranking' %}">영화 랭킹</a></li>
+                                <li><a href="{% url 'pjhinfo' %}">상영관 위치</a></li>
+                                <li><a href="{% url 'bookmovie' %}">예매</a></li>
+                                {% if user.is_active %}
+                                <li>
+                                    <a href="{% url 'userinfo' %}">{{user}}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signout' %}">로그아웃</a><br>
+                                </li>
+                                {% else %}
+                                <li>
+
+                                    <a href="{% url 'signin' %}">로그인</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signup' %}">회원가입</a>
+
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="paywrap">
+        <div class="contain">
+            <div class="infowrapper">
+                <div class="bookinfo">
+                    <div class="subtitle">
+                        <h2>예매 정보</h2>
+                    </div>
+                    <div class="booktext">
+                        {% for movie in final_movie.all %}
+                        <img class="imgdiv" src="{{movie.movie_poster.url}}"  width="175px">
+
+                        <ul>
+                            <li id="movie_title">{{movie.movie_name}}</li>
+                            {% endfor %}
+                            {% for pjh in final_pjh.all %}
+                            <li>지점 | {{pjh.pjh_name}}</li>
+                            {% endfor %}
+                            <li>날짜 | {{date_message}}</li>
+                            <li>상영관 | {{theater_message}} 상영관</li>
+                            <li>시간 | {{time_message}}</li>
+                            <li>좌석 | {{seat_message}}</li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="payinfo">
+                    <div class="subtitle">
+                        <h2>결제 정보</h2>
+                    </div>
+                    <div class="paytext">
+                        <ul id="paypay">
+                            <li style="font-size: 20pt;">결제 수단</li>
+                            <li id="payway" style="font-size: 13.5pt;"><input type="radio" name="payment" value="card"> 신용카드&nbsp;&nbsp;
+                                <input type="radio" name="payment" value="mutongjang"> 무통장 결제&nbsp;&nbsp;
+                                <input type="radio" name="payment" value="live"> 현장 결제 </li><br>
+                            <li style="font-size: 20pt;">회원등급 | {{final_user.grade}}</li>
+                            <li style="font-size: 13.5pt;">
+                                {% if final_user.grade == 'GOLD' %} 할인 | 0원<br> 가격 | 15000원<br>
+                                {% elif final_user.grade == 'PLATINUM' %} 할인 | 3000원<br> 가격 | 12000원<br>
+                                {% elif final_user.grade == 'VIP' %} 할인 | 5000원<br> 가격 | 10000원<br>
+                                {% else %} 할인 | 7000원<br> 가격 | 8000원<br>
+                                {% endif %}
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ruletext">
+                <ul>
+                    <li>인터넷 예매는 온라인 상으로 영화 상영 시간 20분 전까지 취소 가능하며 20분 이후에는 현장에서 취소를 하셔야 합니다.</li>
+                    <li>취소는 상영시간 전까지 하실 수 있으며, 전화로 취소 요청을 하실 경우 취소가 되지 않습니다.</li>
+                    <li>입장 지연에 따른 관람 불편을 최소화하기 위해 본 영화는 10분 후 상영이 시작됩니다.</li>
+                </ul>
+            </div>
+            <div class="submmitarea">
+                <div onclick="complete('{{movie_message}}','{{pjh_message}}','{{date_message}}', '{{theater_message}}','{{time_message}}','{{seat_message}}');">예매하기</div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <footer id="footer">
+
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <h2><img src="./image/logo.PNG"></h2>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴/광고/부대사업 문의</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">윤리경영</a></li>
+                        </ul>
+                        <address>
+                                <p>4공학관 스매쉬룸<br><span class="bar2">대표자명: 구치훈</span> 제작자: 장주섭 김동규 강은지 석예림 <br><span class="bar2">사업자등록번호 123-45-59478</span> 통신판매업신고번호 제 833호</p>
+                                <p>Copyright 2014 by MegaboxJoongAng Inc. All right reserved</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src='./js/jquery.min.js'></script>
+    <script>
+        function complete(movie_id, pjh_id, date, theater, time, seat) {
+            console.log(movie_id);
+            console.log(pjh_id);
+            console.log(date);
+            console.log(time);
+            console.log(theater);
+            console.log(seat);
+            window.location.href = `${window.location.origin}/completed/?&seat=${seat}&theater=${theater}&time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}`
+        }
+    </script>
+
 </body>
+
 </html>
