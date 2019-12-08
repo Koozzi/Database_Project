@@ -371,7 +371,7 @@ def completed(request):
         if current_user.user_bcount >= 50:
             current_user.grade = 'LEGEND'
             current_user.save()
-
+        final_user = request.user
         return render(request, 'movie/completed.html',{
             'movie_message': movie_message,
             'pjh_message': pjh_message,
@@ -381,7 +381,7 @@ def completed(request):
             'seat_message': seat_message,
             'real_final_movie': real_final_movie,
             'real_final_pjh': real_final_pjh,
-
+            'final_user': final_user,
         })
     else:
         return render(request, 'movie/login.html')
@@ -402,7 +402,7 @@ def bookpay(request):
         seat_message = "{}".format(seat)    #seat_message 에는 고객이 선택한 좌석이 들어있다.
         final_movie = movieinfo.objects.filter(movie_id=movie_message)
         final_pjh = pjh.objects.filter(pjh_id=pjh_message)
-
+        final_user = request.user
         return render(request, 'movie/bookpay.html', {
             'movie_message': movie_message,
             'pjh_message': pjh_message,
@@ -412,6 +412,7 @@ def bookpay(request):
             'seat_message': seat_message,
             'final_movie': final_movie,
             'final_pjh': final_pjh,
+            'final_user': final_user,
         })
     else:
         return render(request, 'movie/login.html')
