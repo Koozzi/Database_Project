@@ -179,6 +179,7 @@ ol {
 .seat label:hover {
     cursor: pointer;
     box-shadow: 0 0 0px 2px #5C6AFF;
+    color:white;
 }
 
 @-webkit-keyframes rubberBand {
