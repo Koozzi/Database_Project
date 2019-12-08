@@ -293,7 +293,7 @@ def detail(request, pk):
 
 
 def ranking(request):
-    movies = movieinfo.objects.all().exclude(movie_playing = 2).order_by('-movie_score')
+    movies = movieinfo.objects.all().exclude(movie_playing = 2).order_by('-movie_score')[:10]
     return render(request, 'movie/ranking.html', {
         'movies':movies,
     })
