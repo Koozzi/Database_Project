@@ -367,7 +367,7 @@ def completed(request):
             bk.save()
 
         current_user = realUser.objects.get(username=request.user)
-        current_user.user_bcount += 1
+        current_user.user_bcount += int(book_num)
         current_user.save()
 
         sales = sale.objects.get(id=pjh_message)
