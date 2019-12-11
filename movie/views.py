@@ -527,6 +527,23 @@ def aa(request, pk):
     current_user = realUser.objects.get(username=request.user)
     current_user.user_bcount -= 1
     current_user.save()
+
+    if current_user.user_bcount >= 5:
+        current_user.grade = 'PLATINUM'
+        current_user.save()
+
+    if current_user.user_bcount >= 10:
+        current_user.grade = 'VIP'
+        current_user.save()
+
+    if current_user.user_bcount >= 20:
+        current_user.grade = 'VVIP'
+        current_user.save()
+
+    if current_user.user_bcount >= 50:
+        current_user.grade = 'LEGEND'
+        current_user.save()
+
     book = booking.objects.get(id=pk)
     book.delete()
     return render(request, 'movie/deletebooking.html')
