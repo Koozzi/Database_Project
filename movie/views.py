@@ -375,18 +375,22 @@ def completed(request):
             sales.love_money += 15000 * int(book_num)
             sales.save()
             price = 15000 * int(book_num)
+            discount = 0
         elif current_user.grade == 'PLATINUM':
             sales.love_money += 12000 * int(book_num)
             sales.save()
             price = 12000 * int(book_num)
+            discount = 3000 * int(book_num)
         elif current_user.grade == 'VIP':
             sales.love_money += 10000 * int(book_num)
             sales.save()
             price = 10000 * int(book_num)
+            discount = 5000 * int(book_num)
         else:
             sales.love_money += 8000 * int(book_num)
             sales.save()
             price = 8000 * int(book_num)
+            discount = 7000 * int(book_num)
 
         if current_user.user_bcount >= 5:
             current_user.grade = 'PLATINUM'
@@ -416,6 +420,7 @@ def completed(request):
             'final_user': final_user,
             'price': price,
             'book_num': book_num,
+            'discount': discount,
         })
     else:
         return render(request, 'movie/login.html')
@@ -458,12 +463,16 @@ def bookpay(request):
         current_user = realUser.objects.get(username=request.user)
         if current_user.grade == 'GOLD':
             price = 15000 * int(book_num)
+            discount = 0
         elif current_user.grade == 'PLATINUM':
             price = 12000 * int(book_num)
+            discount = 3000 * int(book_num)
         elif current_user.grade == 'VIP':
             price = 10000 * int(book_num)
+            discount = 5000 * int(book_num)
         else:
             price = 8000 * int(book_num)
+            discount = 7000 * int(book_num)
 
         return render(request, 'movie/bookpay.html', {
             'movie_message': movie_message,
@@ -477,6 +486,7 @@ def bookpay(request):
             'final_user': final_user,
             'price': price,
             'book_num': book_num,
+            'discount': discount,
         })
     else:
         return render(request, 'movie/login.html')
