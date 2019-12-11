@@ -239,7 +239,18 @@
 <!--            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
             <script>
                 var seat_input;
+                var seatArray = [];
+
                 function box_checked(seat_id){
+                    var filtered = seatArray.filter(x => x === seat_id);
+                    if(filtered.length !== 0){
+                        var targetIndex = seatArray.indexOf(filtered[0]);
+                        seatArray.splice(targetIndex, 1);
+
+                    }
+                    else {
+                        seatArray.push(seat_id);
+                    }
                     seat_input = seat_id;
                 }
                 //
@@ -257,7 +268,7 @@
                     console.log(time);
                     console.log(theater);
                     console.log(seat_input);
-                    window.location.href=`${window.location.origin}/bookpay/?seat=${seat_input}&time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}&theater=${theater}`
+                    window.location.href=`${window.location.origin}/bookpay/?seat=${seatArray}&time=${time}&date=${date}&pjh=${pjh_id}&movie=${movie_id}&theater=${theater}`
                 }
             </script>
 </body>

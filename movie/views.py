@@ -323,20 +323,48 @@ def completed(request):
         theater_message = "{}".format(theater)
         seat_message = "{}".format(seat)  # seat_message 에는 고객이 선택한 좌석이 들어있다.
 
+        new_bk = []
+        new_bk.append(seat_message)
+        new_real_bk = [[0 for col in range(3)] for row in range(100)]
+        for i in range(len(new_bk[0])):
+            print(new_bk[0][i])
+
+        j = 0
+        k = 0
+        for i in range(len(new_bk[0])):
+            if (i % 4) != 3:
+                new_real_bk[j][k] = new_bk[0][i]
+                k += 1
+                if k == 3:
+                    j += 1
+                    k = 0
+
+        book_num = int(len(new_bk[0]) / 4) + 1
+
         final_movie = movieinfo.objects.get(movie_id=movie_message)
         final_pjh = pjh.objects.get(pjh_id=pjh_message)
 
         real_final_movie = movieinfo.objects.filter(movie_id=movie_message)
         real_final_pjh = pjh.objects.filter(pjh_id=pjh_message)
 
-        bk = booking(username=request.user,
-                     movie=final_movie,
-                     pjh=final_pjh,
-                     date=date_message,
-                     theater=theater_message,
-                     time=time_message,
-                     seat=seat_message)
-        bk.save()
+        # bk = booking(username=request.user,
+        #              movie=final_movie,
+        #              pjh=final_pjh,
+        #              date=date_message,
+        #              theater=theater_message,
+        #              time=time_message,
+        #              seat=seat_message)
+        # bk.save()
+
+        for i in range(int(book_num)):
+            bk = booking(username=request.user,
+                         movie=final_movie,
+                         pjh=final_pjh,
+                         date=date_message,
+                         theater=theater_message,
+                         time=time_message,
+                         seat=new_real_bk[i][0] + new_real_bk[i][1] + new_real_bk[i][2])
+            bk.save()
 
         current_user = realUser.objects.get(username=request.user)
         current_user.user_bcount += 1
