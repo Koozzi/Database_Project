@@ -484,7 +484,7 @@ def bookpay(request):
 def userinfo(request):
     if request.user.is_authenticated:
         current_user = request.user
-        user_booking = booking.objects.select_related("username").filter(username=request.user).order_by('-date')[:5]
+        user_booking = booking.objects.select_related("username").filter(username=request.user).order_by('-date')
         reviews = review.objects.select_related("username").filter(username=request.user).order_by('-review_time')[:10]
 
         return render(request, 'movie/userinfo.html',{
