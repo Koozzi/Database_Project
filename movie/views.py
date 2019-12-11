@@ -497,10 +497,23 @@ def userinfo(request):
         user_booking = booking.objects.select_related("username").filter(username=request.user).order_by('-date')
         reviews = review.objects.select_related("username").filter(username=request.user).order_by('-review_time')[:10]
 
+        useraa = realUser.objects.get(username=request.user)
+        if useraa.grade == 'GOLD':
+            rest = 5 - useraa.user_bcount
+        elif useraa.grade == 'PLATINUM':
+            rest = 10 - useraa.user_bcount
+        elif useraa.grade == 'VIP':
+            rest = 20 - useraa.user_bcount
+        elif useraa.grade == 'VVIP':
+            rest = 50 - useraa.user_bcount
+        else:
+            rest = 0
+
         return render(request, 'movie/userinfo.html',{
             'current_user': current_user,
             'user_booking': user_booking,
             'reviews': reviews,
+            'rest': rest,
         })
     else:
         return render(request, 'movie/login.html')

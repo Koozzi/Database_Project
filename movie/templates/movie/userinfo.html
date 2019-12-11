@@ -66,7 +66,19 @@
             <hr>
             <div id="image">
                 <img src="/static/image/account.png" alt="user_image">
-                <p><span id="user_name">{{current_user.username}}</span></p>
+                <p><span>등급 :</span> <span id="grade">{{current_user.grade}}
+                    {% if current_user.grade == 'GOLD' %}
+                        (PLATINUM 까지 {{rest}}번 남았습니다.)
+                    {% elif current_user.grade == 'PLATINUM' %}
+                        (VIP 까지 {{rest}}번 남았습니다.)
+                    {% elif current_user.grade == 'VIP' %}
+                        (VVIP까지 {{rest}}번 남았습니다.)
+                    {% elif current_user.grade == 'VVIP' %}
+                        (LEGEND까지 {{rest}}번 남았습니다.)
+                    {% else %}
+                        (마지막 등급입니다.)
+                    {% endif %}
+                </span> </p>
             </div>
             <hr>
             <div id="info">
