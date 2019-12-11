@@ -66,6 +66,11 @@
             <hr>
             <div id="image">
                 <img src="/static/image/account.png" alt="user_image">
+                <p><span id="user_name">{{current_user.username}}</span></p>
+            </div>
+            <hr>
+            <div id="info">
+
                 <p><span>등급 :</span> <span id="grade">{{current_user.grade}}
                     {% if current_user.grade == 'GOLD' %}
                         (PLATINUM 까지 {{rest}}번 남았습니다.)
@@ -79,11 +84,6 @@
                         (마지막 등급입니다.)
                     {% endif %}
                 </span> </p>
-            </div>
-            <hr>
-            <div id="info">
-
-                <p><span>등급 :</span> <span id="grade">{{current_user.grade}}</span> </p>
                 <p><span>이름 :</span> {{current_user.last_name}} {{current_user.first_name}} </p>
 
                 <p><span>가입날짜 :</span> {{current_user.date_joined}} </p>
