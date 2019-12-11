@@ -91,7 +91,7 @@
 
                 <p><span>예매내역 (예매횟수 : {{current_user.user_bcount}})</span></p>
                 {% for i in user_booking %}
-                <p>{{i.movie}} {{i.pjh}} {{i.date}} {{i.theater}}상영관 {{i.time}} {{i.seat}}<br></p>
+                <p>{{i.movie}} {{i.pjh}} {{i.date}} {{i.theater}}상영관 {{i.time}} {{i.seat}} <a id="deleteBooking" href="{% url 'aa' i.id %}" method="POST" >삭제하기</a><br></p>
                 {% endfor %}
                 <br>
             </div>

@@ -523,3 +523,10 @@ def zz(request, pk):
     rev.delete()
     return render(request, 'movie/deletereview.html')
 
+def aa(request, pk):
+    current_user = realUser.objects.get(username=request.user)
+    current_user.user_bcount -= 1
+    current_user.save()
+    book = booking.objects.get(id=pk)
+    book.delete()
+    return render(request, 'movie/deletebooking.html')
