@@ -92,10 +92,10 @@
                                 <input type="radio" name="payment" value="live"> 현장 결제 </li><br>
                             <li style="font-size: 20pt;">회원등급 | {{final_user.grade}}</li>
                             <li style="font-size: 13.5pt;">
-                                {% if final_user.grade == 'GOLD' %} 할인 | 0원<br> 가격 | 15000원<br>
-                                {% elif final_user.grade == 'PLATINUM' %} 할인 | 3000원<br> 가격 | 12000원<br>
-                                {% elif final_user.grade == 'VIP' %} 할인 | 5000원<br> 가격 | 10000원<br>
-                                {% else %} 할인 | 7000원<br> 가격 | 8000원<br>
+                                {% if final_user.grade == 'GOLD' %} 할인 | 0원<br> 가격 | 15000 x {{book_num}} = {{price}}원<br>
+                                {% elif final_user.grade == 'PLATINUM' %} 할인 | 3000원<br> 가격 | 12000 x {{book_num}} = {{price}}원<br>
+                                {% elif final_user.grade == 'VIP' %} 할인 | 5000원<br> 가격 | 10000 x {{book_num}} = {{price}}원<br>
+                                {% else %} 할인 | 7000원<br> 가격 | 8000 x {{book_num}} = {{price}}원<br>
                                 {% endif %}
                             </li>
 

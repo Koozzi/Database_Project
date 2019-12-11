@@ -372,17 +372,21 @@ def completed(request):
 
         sales = sale.objects.get(id=pjh_message)
         if current_user.grade == 'GOLD':
-            sales.love_money += 15000
+            sales.love_money += 15000 * int(book_num)
             sales.save()
+            price = 15000 * int(book_num)
         elif current_user.grade == 'PLATINUM':
-            sales.love_money += 12000
+            sales.love_money += 12000 * int(book_num)
             sales.save()
+            price = 12000 * int(book_num)
         elif current_user.grade == 'VIP':
-            sales.love_money += 10000
+            sales.love_money += 10000 * int(book_num)
             sales.save()
+            price = 10000 * int(book_num)
         else:
-            sales.love_money += 8000
+            sales.love_money += 8000 * int(book_num)
             sales.save()
+            price = 8000 * int(book_num)
 
         if current_user.user_bcount >= 5:
             current_user.grade = 'PLATINUM'
@@ -410,6 +414,8 @@ def completed(request):
             'real_final_movie': real_final_movie,
             'real_final_pjh': real_final_pjh,
             'final_user': final_user,
+            'price': price,
+            'book_num': book_num,
         })
     else:
         return render(request, 'movie/login.html')
@@ -431,6 +437,34 @@ def bookpay(request):
         final_movie = movieinfo.objects.filter(movie_id=movie_message)
         final_pjh = pjh.objects.filter(pjh_id=pjh_message)
         final_user = request.user
+
+        new_bk = []
+        new_bk.append(seat_message)
+        new_real_bk = [[0 for col in range(3)] for row in range(100)]
+        for i in range(len(new_bk[0])):
+            print(new_bk[0][i])
+
+        j = 0
+        k = 0
+        for i in range(len(new_bk[0])):
+            if (i % 4) != 3:
+                new_real_bk[j][k] = new_bk[0][i]
+                k += 1
+                if k == 3:
+                    j += 1
+                    k = 0
+
+        book_num = int(len(new_bk[0]) / 4) + 1
+        current_user = realUser.objects.get(username=request.user)
+        if current_user.grade == 'GOLD':
+            price = 15000 * int(book_num)
+        elif current_user.grade == 'PLATINUM':
+            price = 12000 * int(book_num)
+        elif current_user.grade == 'VIP':
+            price = 10000 * int(book_num)
+        else:
+            price = 8000 * int(book_num)
+
         return render(request, 'movie/bookpay.html', {
             'movie_message': movie_message,
             'pjh_message': pjh_message,
@@ -441,6 +475,8 @@ def bookpay(request):
             'final_movie': final_movie,
             'final_pjh': final_pjh,
             'final_user': final_user,
+            'price': price,
+            'book_num': book_num,
         })
     else:
         return render(request, 'movie/login.html')
